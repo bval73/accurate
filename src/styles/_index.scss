@@ -1,0 +1,33 @@
+@import './colors';
+@import './header';
+@import './rental-home';
+@import './carousel';
+@import 'font-awesome';
+@import 'rental-detail';
+@import 'forms';
+
+.spv-container{
+  padding: 50px 0;
+  // section {border: 2px solid #abceba;}
+}
+
+label{margin-right: 5px;}
+
+.title{
+  font-size: 100px;
+}
+
+.rental-link{
+  color:inherit;
+  text-decoration: none;
+}
+
+.card-list{
+  margin-top: 20px;
+}
+
+h1{
+  color: #a54f23;
+}
+
+

@@ -1,0 +1,253 @@
+a.skip-main {
+  position: absolute;
+  top: auto;
+  left: -999px;
+  width: 1px;
+  height: 1px;
+}
+
+.blue-green{
+  background: $blue-green;
+}
+.navbar{
+  padding: 10px 30px;
+  .navbar-item{
+    font-size: 18px;
+  }
+  
+  .navbar-search{
+    height:40px;
+    width:250px;
+  }
+
+  .btn-search{
+    border-color:white;
+    color: white;
+    &:hover{
+      background-color: $brown;
+      border-color: $brown;
+      color:white;
+    }
+  }
+  .welcome-msg{
+    font-size: large;
+    font-weight: bold;
+    div{
+      color: white !important;
+    }
+  }
+}
+
+.navbar-dark .navbar-nav{
+  .nav-link{
+    &:hover{cursor: pointer;}
+    &:hover, &:active, &:focus{
+      color: white;
+    }
+  }
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: $brown;
+  background-color: $blue-green;
+}
+
+.top-banner {
+  color: $brown;
+  padding: 10px;
+  img{
+    max-width: 250px;
+  }
+  .fa{
+    padding-right: .5rem;
+  }
+  a {
+    color: $brown;
+    text-decoration: none;
+  }
+  .float-end{
+    a{
+      padding-right: 5px;
+    }
+  }
+  &.logo-row{
+    background-color: aliceblue;
+    .logo-right{
+      font-size: xx-large;
+      text-align: center;
+      .acc-btn{
+        span{
+          font-size: 1.3rem;
+          position: relative;
+          top: -18px;
+        }
+      }
+    }
+  }
+}
+
+.acc-btn {
+  background-color: #abceba;
+  border: green 5px solid;
+  padding: 0 10px;
+  border-radius: 2.4rem;
+  height: auto;
+  color: #a54f23;
+}
+
+.banner-text{
+  margin-left: 15%;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.navbar-dark .navbar-toggler {
+  margin-bottom: 12px;
+}
+
+#root{
+  overflow-x: hidden;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: $brown;
+}
+
+
+
+
+@media screen and (max-width: 1280px) {
+  .top-banner{
+    &.logo-row {
+      .acc-btn{
+        &.contact {
+          border-radius: 2.4rem;
+//          height: 5.5rem;
+          span{
+            font-size: 2.6vh;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .top-banner{
+    &.logo-row {
+      .acc-btn{
+        &.contact {
+          border-radius: 2.4rem;
+//          height: 4.5rem;
+          span{
+            font-size: 2.6vh;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .top-banner{
+    &.logo-row {
+      .logo-right {
+        font-size: x-large;
+        .acc-btn{
+          span {
+            font-size: x-large;
+            top: -12px;
+          };
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .top-banner{
+    &.logo-row {
+      .logo-right {
+//        font-size: x-large;
+        .acc-btn{
+          span {
+            font-size: x-large;
+            top: -12px;
+          };
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 740px)  {
+  .top-banner{
+    &.logo-row {
+      .logo-right {
+//        font-size: x-large;
+        .acc-btn {
+          &.contact{
+            border-radius: 4.4rem;
+            width: 100%;
+            font-size: x-large;
+          }
+          span {
+            font-size: x-large;
+            position: relative;
+            top: -12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .top-banner{
+    &.logo-row {
+      .logo-right {
+//        font-size: x-large;
+        position: relative;
+        .acc-btn {
+          &.contact{
+            border-radius: 4.4rem;
+            width: 100%;
+            font-size: xx-large ;
+          }
+          span {
+            font-size: 3vh;
+            position: relative;
+            top: -14px;
+          }
+        }
+      }
+    }
+  }
+  .logo{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3vh;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .top-banner{
+    &.logo-row {
+      .logo-right {
+//        font-size: x-large;
+        .acc-btn {
+          &.contact{
+            border-radius: 4.4rem;
+            width: 100%;
+          }
+          span {
+            font-size: x-large;
+            position: relative;
+            top: -14px;
+          }
+        }
+      }
+    }
+  }
+}
+

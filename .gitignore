@@ -21,3 +21,15 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/src/**/*.css
+
+/server/config/dev.js
+/.vscode
+*data.js
+houseLink.js
+src/*.svg
+src/*.png
+src/*.b64
+public/images
+public/*.png
