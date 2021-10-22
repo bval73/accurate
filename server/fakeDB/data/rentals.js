@@ -1,20 +1,5 @@
 
-exports.users = [
-  {
-    username: "Billy Bob",
-    email: "bvalentineii@hotmail.com",
-    password: "testtest",
-    notify: false,
-    userType: "admin"
-  },
-  {
-    username: "Billy Bob",
-    email: "test@hotmail.com",
-    password: "testtest",
-    notify: false,
-    userType: "user"
-  }
-]
+
 
 exports.rentals =  [
 {

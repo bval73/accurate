@@ -2,6 +2,28 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Hoe to run this project.
+Create `dev.js` file in `server/config/dev.js` with content of:
+
+```javascript
+module.exports = {
+  DB_URI: 'your DB connection string', //Get it here https://www.mongodb.com/atlas/database
+  SECRET: 'some unique value', // e.g: nocx8t9yuignm
+  AWS_ACCESS_KEY_ID: 'Your key',
+  AWS_SECRET_ACCESS_KEY: 'Your key',
+  STRIPE_SK: 'sk_test_Your key',
+  STRIPE_PK: 'pk_test_Your key',
+  IP_CITY_KEY:'Your key'
+}
+```
+
+In base folder of project run `npm install` then `npm run start-first` to startup dev server.
+
+To run api server go to `server` folder and run `node index.js`
+
+## How to populate DB with default data 
+When your `dev.js` file is created run `node fakeDB/cleanDB` in `server` folder to populate database with some data.
+
 ## Available Scripts
 
 In the project directory, you can run:
