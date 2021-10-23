@@ -49,7 +49,6 @@ class RentalDetail extends Component {
 
 
 const mapStateToProps = ({rental}) => { 
-  debugger
   return{
     rental: rental.item,
     isFetching: rental.isFetching

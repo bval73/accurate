@@ -81,16 +81,18 @@ export const fetchSurfaceWash = () => async dispatch => {
 }
 
 // page by id / pagename
-export const fetchPageById = pageName => async dispatch => { 
+export const fetchPageById = (pageName) => async dispatch => {
   debugger;
   dispatch({type: 'IS_FETCHING_PAGE'});
   const res = await axios.get(`/api/v1/pages/${pageName}`);
+  console.log('actions page name is ', pageName);
     //send to reducer
   dispatch({
     type: 'FETCH_PAGE_BY_ID',
     page: res.data
   });
 }
+
 
 //Contact page
 export const sendContact = contactData => async dispatch => {
@@ -144,3 +146,4 @@ export const userAuthenticated = (decodedToken) => {
     userType: decodedToken.userType || ''
   }
 }
+

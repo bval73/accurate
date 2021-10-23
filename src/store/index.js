@@ -21,18 +21,7 @@ export function initStore() {
     surfacewash,
     auth,
     page,
-    map: rentalMapReducer,
-    user: (state = [], action) => {
-      if(action.type === 'Fetch_User'){
-        return{
-          email: 'bvalentineii@hotmail.com',
-          password: 'boogaloo'
-        }
-      }else{
-        return state;
-      }
-      
-    }
+    map: rentalMapReducer
   })
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
