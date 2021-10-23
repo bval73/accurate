@@ -52,7 +52,7 @@ const Routes = () => {
           <SecretPage />
         </AuthRoute>
 
-        <Route exact path="/page/:pageName" component={GetPage} />
+        <Route exact path="/pages/:pageName" component={GetPage} />
         <Route path="/pressure-washing*-fl" component={CityPage} />
 
         <Route path="/rentals/:_id" component={RentalDetail} />
