@@ -18,7 +18,7 @@ class CityMap extends Component{
     console.log('the location is ', location);
     return(
       <MapWithAGeocode
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-tsuo3-7P6MHm1ehk53rauJzav_OfhPM&libraries=geometry,drawing,places"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `405px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
