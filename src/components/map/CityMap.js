@@ -33,7 +33,7 @@ class CityMap extends Component{
 //   frameBorder="0" 
 //   style={{border:0}}
 
-//   src="https://www.google.com/maps/embed/v1/view?key=AIzaSyD-tsuo3-7P6MHm1ehk53rauJzav_OfhPM&center=28.3582411,-82.2208385">
+//   src="https://www.google.com/maps/embed/v1/view?key=YOUR_KEY_HERE&center=28.3582411,-82.2208385">
 // </iframe>
     )
   }
