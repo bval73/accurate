@@ -1,3 +1,4 @@
+
 const Page = require('../models/page');
 
 
@@ -12,7 +13,6 @@ exports.getPages = (req, res) => {
 
 exports.getPageById = (req, res) => {
   const { pageName } = req.params;
-  console.log('page name is ', pageName);
 
   Page.find({pageName}, (err, foundPage) => {
     if(err) {

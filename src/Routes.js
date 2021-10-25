@@ -15,12 +15,8 @@ import Services from 'pages/Services';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import Intro from 'blog/Difference';
-import SoftWash from 'pages/SoftWash';
-import RoofWash from 'pages/RoofWash';
-import HouseWash from 'pages/HouseWash';
 import Contact from 'pages/Contact';
 import CityPage from 'pages/CityPage';
-import SurfaceWash from 'pages/SurfaceWash';
 import GetPage from 'pages/GetPage';
 import SecretPage from 'pages/SecretPage';
 
@@ -42,17 +38,13 @@ const Routes = () => {
           <Register />
         </GuestRoute>
 
-        <Route exact path="/house-wash" component={HouseWash} />
-        <Route exact path="/roof-wash" component={RoofWash} />
-        <Route exact path="/soft-wash" component={SoftWash} />
         <Route exact path="/contact" component={Contact} />
-        <Route exact path="/surface-wash" component={SurfaceWash} />
 
         <AuthRoute path="/secret" >
           <SecretPage />
         </AuthRoute>
 
-        <Route exact path="/pages/:pageName" component={GetPage} />
+        <Route exact path="/page/:pageName" component={GetPage} />
         <Route path="/pressure-washing*-fl" component={CityPage} />
 
         <Route path="/rentals/:_id" component={RentalDetail} />

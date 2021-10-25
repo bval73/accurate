@@ -34,69 +34,21 @@ export const fetchRentalById = rentalId => async dispatch => {
   });
 }
 
-//House Wash -----------------------------------
-export const fetchHouseWash = () => async dispatch => {
-  const res = await axios.get('/api/v1/pages/houseWash')
-  //send to reducer
-  dispatch({
-      type: 'HOUSE_WASH',
-      pages: res.data
-  })
-}
-
-//Soft Wash -----------------------------------
-export const fetchSoftWash = () => async dispatch => {
-  dispatch({type: 'IS_FETCHING_SOFT_WASH'});
-  const res = await axios.get('/api/v1/pages/softWash')
-  //send to reducer
-  dispatch({
-      type:'SOFT_WASH',
-      pages: res.data
-  })
-}
-
-//Roof Wash -----------------------------------
-export const fetchRoofWash = () => async dispatch => {
-  dispatch({type: 'IS_FETCHING_ROOF_WASH'});
-  const res = await axios.get('/api/v1/pages/roofWash')
-  //send to reducer
-  dispatch({
-      type: 'ROOF_WASH',
-      pages: res.data
-  })
-}
-
-//Surface Wash -----------------------------------
-export const fetchSurfaceWash = () => async dispatch => {
-  dispatch({
-    type: 'IS_FETCHING_SURFACE_WASH'
-  });
-  const res = await axios.get('/api/v1/pages/surfaceWash');
-
-  //send to reducer
-  dispatch({
-      type:'SURFACE_WASH',
-      pages: res.data
-  })
-}
-
 // page by id / pagename
-export const fetchPageById = (pageName) => async dispatch => {
-  debugger;
+export const fetchPageById = pageName => async dispatch => {
+// debugger;
   dispatch({type: 'IS_FETCHING_PAGE'});
   const res = await axios.get(`/api/v1/pages/${pageName}`);
-  console.log('actions page name is ', pageName);
     //send to reducer
   dispatch({
     type: 'FETCH_PAGE_BY_ID',
-    page: res.data
+    pages: res.data
   });
 }
 
-
 //Contact page
 export const sendContact = contactData => async dispatch => {
-  debugger
+ // debugger
   dispatch({type: 'IS_SEND_EMAIL'});
   const res = await axios.get('/api/v1/contact}');
   console.log('Contact form data  ', JSON.stringify(contactData));

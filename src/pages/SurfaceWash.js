@@ -7,7 +7,7 @@ import { fetchSurfaceWash } from 'actions/';
 class SurfaceWash extends Component {
 
   componentDidMount() {
-    debugger
+    //
     this.props.dispatch(fetchSurfaceWash()); //from actions..
   }
 

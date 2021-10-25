@@ -4,6 +4,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+const refresh = () => {
+  setTimeout(() => { 
+    window.location.reload(); 
+  }, 5);
+}
+
 
 const Header = ({username, userType, isAuth, logout}) => {
   return(
@@ -27,13 +33,13 @@ const Header = ({username, userType, isAuth, logout}) => {
               Services
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><Link className="dropdown-item" to="/roof-wash">Roof Wash</Link></li>
+                <li><Link onClick={refresh} className="dropdown-item" to="/page/roofWash/">Roof Wash</Link></li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><Link className="dropdown-item" to="/house-wash">House Wash</Link></li>
+                <li><Link onClick={refresh} className="dropdown-item" to="/page/houseWash/">House Wash</Link></li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><Link className="dropdown-item" to="/soft-wash">Soft Wash</Link></li>
+                <li><Link onClick={refresh} className="dropdown-item" to="/page/softWash/">Soft Wash</Link></li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><Link className="dropdown-item" to="/surface-wash">Surface Wash</Link></li>
+                <li><Link onClick={refresh} className="dropdown-item" to="/page/surfaceWash/">Surface Wash</Link></li>
               </ul>
             </li>
             <li className="nav-item">
