@@ -6,16 +6,15 @@
 import { combineReducers } from 'redux';
 
 const initPageReducer = () => {
-  const item = (state = {}, action) => {
+  const item = (state = [], action) => {
     //coming from actions fetchPageById
-    debugger
     switch(action.type) {
       case 'FETCH_PAGE_BY_ID':
         return action.pages;
       case 'IS_FETCHING_PAGE':
         return [];
       case 'CREATE_PAGE':
-        return state;
+        return [...state, action.pages];
       default:
         return state;
     }

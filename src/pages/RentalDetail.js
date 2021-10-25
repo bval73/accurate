@@ -18,6 +18,7 @@ class RentalDetail extends Component {
 
   render() {
     const { rental, isFetching } = this.props;
+    debugger
     if(isFetching){return null;}
     return (
       <div>

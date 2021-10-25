@@ -10,7 +10,7 @@ import { sendContact } from 'actions';
 class Contact extends Component {
 
   contactSubmit = (contactData) => {
-    debugger
+ //   debugger
     sendContact(contactData);
   }
 

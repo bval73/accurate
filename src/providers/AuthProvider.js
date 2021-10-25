@@ -39,7 +39,6 @@ const AuthBaseProvider = ({children, dispatch}) => {
 
   const decodeToken = token => {
     const decoded = jwt.decode(token);
-    console.log(decoded)
     return decoded;
   }
 
