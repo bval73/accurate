@@ -2,23 +2,24 @@
 const pages = require('./data/pages');
 const Page = require('../models/page');
 
-const {rentals, users} = require('./data/rentals');
-const Rental = require('../models/rental');
-
+const {users} = require('./data/users');
 const User = require('../models/user');
+
+const {jobs} = require('./data/jobs');
+const Job = require('../models/job');
 
 class FakeDB {
 
   async clean() {
-    await Rental.deleteMany({});
     await Page.deleteMany({});
     await User.deleteMany({});
+    await Job.deleteMany({});
   }
 
   async insertData() {
-    await Rental.create(rentals);
     await Page.create(pages);
     await User.create(users);
+    await Job.create(jobs);
   }
 
   async populate() {

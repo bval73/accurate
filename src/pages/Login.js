@@ -14,7 +14,6 @@ import { withAuth } from 'providers/AuthProvider'; //HOC
 
 import { Redirect } from 'react-router-dom';
 
-
 class Login extends Component {
   
   constructor() {
@@ -39,12 +38,13 @@ class Login extends Component {
 
   render() {
     document.title = 'Login to Accurate Powerwash to access your account and updates.';
-    const { errors, token, shouldRedirect } = this.state;
+    const { errors, shouldRedirect} = this.state;
     //coming from the register page..
     const { message } = this.props.location.state || '';
+    const { backPage } = this.props.location.state || '/';
 
     if(shouldRedirect) {
-      return <Redirect to={{pathname: '/'}} />
+      return <Redirect to={{pathname: backPage}} />
     }
     return (
       <div className="acc-form">

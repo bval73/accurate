@@ -33,7 +33,7 @@ exports.login = (req, res) =>{
       const token = jwt.sign({
         userId: user.id,
         username: user.username,
-        userType: user.userType
+        usertype: user.usertype
       }, config.SECRET, { expiresIn: '24h' });
       return res.json(token);
     }else{
@@ -81,8 +81,7 @@ exports.register = (req, res) => {
       username,
       email,
       password,
-      notify,
-      userType: 'user'
+      notify
     });
 
     user.save((err) => { //go to bcrypt pre save for password in model
@@ -95,7 +94,6 @@ exports.register = (req, res) => {
 }// end register
 
 exports.authMiddleWare = function(req, res, next){
-
   const token = req.headers.authorization;
   if(token){
       const {user, err} = parseToken(token);

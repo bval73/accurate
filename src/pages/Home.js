@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-import RentalCard from 'components/rental/RentalCard';
-//import store from '../store'; //fake DB
-
-//import connect from '../store/connectOld';
 import { connect } from 'react-redux';
 
-import { fetchRentals } from 'actions/';
+//import RenderPage from 'components/RenderPage';
+import { fetchPageById } from 'actions';
 
 import Carousel from 'shared/Carousel';
 
@@ -14,38 +11,45 @@ import Carousel from 'shared/Carousel';
 class Home extends Component {
 
   state = {
-    rentals: []
+    pages: []
   }
 
- componentDidMount() {
-  this.props.dispatch(fetchRentals()); //from actions..
- }
+  componentDidMount() {
+    this.props.dispatch(fetchPageById('home')); //from actions..
+  }
 
-  renderRentals = (rentals) => 
-    rentals.map(rental => 
-      <div className="col-md-4" key={rental._id}>
-        <RentalCard rental={rental}/>
+  renderPages = (pages) => 
+    pages.map(page => 
+      <div className={page.className} key={page._id}>
+        {/* <RenderPage rental={rental}/> */}
+        <a href={page.pageTitle}>
+          <div className='imageHover'>{page.sectionTitle}</div>
+          <img src={page.image} className="img-fluid" alt=""/>
+        </a>
+        {/* <span>{page.pageTitle}</span> */}
+        
       </div>
     );
 
   render() {
-    const { rentals } = this.props;
+    const { data, isFetching } = this.props;
+
+    if(isFetching){return null;}
+
     document.title = 'Accurate Soft Wash The Top Pressure Washing & Soft Wash Company in Dade City';
 
     return (
       <div>
         <section>
           <h1 className="page-title">We treat your home as if it were ours.</h1>
+          {/* <h1>{data.length > 1 && data[0].pageTitle}</h1> */}
           <Carousel />
         </section>
         <section>
-          <div className="card-list">
-            
-            <div className="row">
-              { 
-                this.renderRentals(rentals)
-              }
-            </div>
+          <div className="row">
+          {
+            this.renderPages(data)
+          }
           </div>
         </section>
       </div>
@@ -53,9 +57,10 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({page}) => {
   return {
-    rentals: state.rentals
+    data: page.item,
+    isFetching: page.isFetching
   }
 }
 

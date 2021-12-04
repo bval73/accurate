@@ -10,15 +10,17 @@ class CityPage extends Component {
     const cityLength = currentCity.length;
 
     switch(cityLength) {
-      case 4:
+      case 3:
         city = currentCity[2].charAt(0).toUpperCase() + currentCity[2].slice(1);
         break;
-      case 5:
+      case 4:
         city = currentCity[2].charAt(0).toUpperCase() + currentCity[2].slice(1) + ' ' + currentCity[3].charAt(0).toUpperCase() + currentCity[3].slice(1);
         break;
-      case 6:
+      case 5: 
         city = currentCity[2].charAt(0).toUpperCase() + currentCity[2].slice(1) + ' ' + currentCity[3].charAt(0).toUpperCase() + currentCity[3].slice(1) + ' ' + currentCity[4].charAt(0).toUpperCase() + currentCity[4].slice(1);
 //        cityMap = currentCity[2]+'+'+currentCity[3]+'+'+currentCity[4]+'+fl';
+        break;      
+      default: return false;
     }
     return city;
   }
@@ -41,3 +43,4 @@ class CityPage extends Component {
 }
 
 export default CityPage;
+

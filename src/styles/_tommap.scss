@@ -1,0 +1,21 @@
+
+//@import "@tomtom-international/web-sdk-maps";
+@import "@tomtom-international/web-sdk-maps/dist/maps.css";
+#acc-map, map{
+  height:360px;
+}
+
+.acc-marker{
+  width: 120px;
+  height: 120px;
+  background-color: gray;
+  border-radius: 50%;
+  opacity: 0.4;
+  margin-top: 60px;
+}
+
+.mapboxgl-canvas {
+  position: relative;
+  width: 546px !important;
+  height: 300px !important;
+}

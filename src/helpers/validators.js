@@ -2,12 +2,11 @@
 
 export const sameAs = (field, getValues) => (value) => {
 // getValues is function of react-hook-form useForm
-//debugger
   const compareTo = getValues()[field];
   if(compareTo !== value){
     return false;
   }
-  return;
+  return true;
   
 }
 // eslint-disable-next-line

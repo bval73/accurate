@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
       config = require('../config'),
       FakeDB = require('./FakeDB');
 
@@ -15,5 +15,5 @@ async (err) => {
   const fakeDB = new FakeDB();
   await fakeDB.populate();
   await mongoose.connection.close();
-  console.log("Clean DB");
+  console.log("DB was cleaned");
 });

@@ -7,8 +7,8 @@ const userSchema = new Schema({
     username: {
         type: String,
         min: [4, 'Too short min character is 4 charcter'],
-        max: [32, 'Too long max character is 32 charcter']
-//        required: 'User name is required',
+        max: [32, 'Too long max character is 32 charcter'],
+        required: 'User name is required'
     },
     email:{
         type: String,
@@ -29,14 +29,19 @@ const userSchema = new Schema({
         type: Boolean,
         default:false
     },
-    userType:{
+    usertype:{
         type: String,
         default: 'user'
-    }
-    // stripeCustomerId: String,
-    // revenue: Number,
-    // rentals: [{type: Schema.Types.ObjectId, ref: 'Rental'}],
-    // bookings: [{type: Schema.Types.ObjectId, ref: 'Booking'}]
+    },
+    phone: {
+        type: String,
+        match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/
+      },
+    street:{type: String},
+    city: {type:String},
+    zip: {type:String},
+    fname: {type:String},
+    lname: {type:String}
 });
 
 //check if password is the same as password on file called in controllers/users
@@ -44,7 +49,7 @@ userSchema.methods.hasSamePassword = function(requestedPassword){
     return bcrypt.compareSync(requestedPassword, this.password);
 }
 
-//encrypt password..
+//encrypt password before we save..
 userSchema.pre('save', function(next) {
     const user = this;
 
@@ -58,5 +63,4 @@ userSchema.pre('save', function(next) {
 })
 
 module.exports = mongoose.model('User', userSchema);
-
 

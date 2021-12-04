@@ -5,6 +5,6 @@ const {
   sendEmail
 } = require('../controllers/contact');
 
-router.get('', sendEmail);
+router.post('/sendEmail', sendEmail);
 
 module.exports = router;

@@ -8,7 +8,6 @@ import ApiErrors from 'components/form/ApiErrors';
 import { registerUser } from 'actions';
 import { Redirect } from 'react-router-dom';
 
-
 class Register extends Component {
 
   state = {
@@ -22,7 +21,6 @@ class Register extends Component {
         this.setState({shouldRedirect: true})
       })
       .catch(err => {
-//        console.log('signUp err', err);
         this.setState({errors: err})
       })
   }
@@ -34,7 +32,6 @@ class Register extends Component {
       return <Redirect to={{pathname: '/login', state:{message: 'You have been succesfuly registered.'}}} /> //shows the message on the login page.
     }
     return (
-      
       <div className="acc-form">
         <div className="row">
           <div className="col-md-5">

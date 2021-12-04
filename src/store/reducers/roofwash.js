@@ -5,13 +5,16 @@
 
 import { combineReducers } from 'redux';
 
-
-const initRentalReducer = () => {
-  const item = (state = {}, action) => {
-    // debugger
+const initRoofWashReducer = () => {
+  const item = (state = [], action) => {
+    //coming from actions fetchRoofWash
     switch(action.type) {
-      case 'FETCH_RENTAL_BY_ID':
-        return action.rental;
+      case 'ROOF_WASH':
+        return action.pages;
+      case 'CREATE_ROOF_WASH':
+        return state;
+      case 'IS_FETCHING_ROOF_WASH':
+        return [];
       default:
         return state;
     }
@@ -19,9 +22,9 @@ const initRentalReducer = () => {
 
   const isFetching = (state = false, action) =>{
     switch(action.type) {
-      case 'IS_FETCHING_RENTAL':
+      case 'IS_FETCHING_ROOF_WASH':
         return true;
-      case 'FETCH_RENTAL_BY_ID':
+      case 'ROOF_WASH':
         return false
       default:
         return state;
@@ -32,7 +35,7 @@ const initRentalReducer = () => {
     item,
     isFetching
   })
-}// end initRentalReducer
-const rental = initRentalReducer();
+}// end initRoofWashReducer
+const roofwash = initRoofWashReducer();
 
-export default rental;
+export default roofwash;

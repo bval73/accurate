@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-//import connect from '../store/connect';
-import { connect } from 'react-redux';
 
 class Intro extends Component {
   render() {
@@ -49,10 +47,14 @@ class Intro extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    rentals: state.rentals
-  }
-}
+export default Intro;
 
-export default connect(mapStateToProps)(Intro);
+
+
+// const mapStateToProps = (state) => {
+//   return {
+//     rentals: state.rentals
+//   }
+// }
+
+// export default connect(mapStateToProps)(Intro);

@@ -84,6 +84,12 @@ a.skip-main {
       }
     }
   }
+  .areas{
+    overflow-wrap: break-word;
+    a {
+      padding-left: 3px;
+    }
+  }
 }
 
 .acc-btn {

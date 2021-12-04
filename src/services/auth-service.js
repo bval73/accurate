@@ -32,6 +32,10 @@ class AuthService{
     return this.decode(this.getToken()).username;
   }
 
+  getUsertype() {
+    return this.decode(this.getToken()).usertype;
+  }
+
   isValid(token){
     return moment().isBefore(this.getExpiration(token));
   }

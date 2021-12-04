@@ -24,11 +24,20 @@ exports.getPageById = (req, res) => {
 
 exports.createPage = (req, res) => {
   const pageData = req.body;
- 
-  Page.create(pageData, (err, createdPage) =>{
-    if(err) {
-      return res.mongoError(err);
-    }
-    return res.json({message: `Page with id: ${createdPage._id} was added`});
-  })
+  const { lastChangedBy, usertype } = res.locals.user;
+
+  pageData.lastChangedBy = res.locals.user._id;
+
+  if(usertype === "admin") {
+    Page.create(pageData, (err, createdPage) => {
+      if(err) {
+        return res.mongoError(err);
+      }
+      console.log('page has been created');
+      return res.json(createdPage);
+    })
+  }else{
+    return res.json({message: 'You are not authorized for this operation'});
+  }
 };
+

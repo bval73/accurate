@@ -1,40 +1,83 @@
 import React, { Component } from 'react';
 
-import { MapWithAGeocode } from './GoogleMap';
+//import { MapWithAGeocode } from './TomMap';
 
 import { connect } from 'react-redux';
 
-import * as actions from 'actions';
+import {reloadMapFinish} from 'actions';
+
+import * as poly from '../../polygon';
+import LoadMap from './LoadMap';
+
 
 class CityMap extends Component{
 
   reloadMapFinish() {
-    this.props.dispatch(actions.reloadMapFinish());
+    this.props.dispatch(reloadMapFinish());
+  }
+
+  getFile(file) {
+    switch (file) {
+      case 'DadeCity':
+        return poly.DadeCity;
+      case 'Odessa':
+        return poly.Odessa;
+      case 'Zephyrhills':
+        return poly.Zephyrhills
+      case 'LandOLakes':
+        return poly.LandOLakes
+      case 'NorthDadeCity':
+        return poly.NorthDadeCity;
+      case 'WesleyChapel':
+        return poly.WesleyChapel
+      case 'StLeo':
+        return poly.StLeo
+      case 'SanAntonio':
+        return poly.SanAntonio
+      case 'ZephyrhillsWest':
+        return poly.ZephyrhillsWest
+      case 'Trilby':
+        return poly.Trilby
+      case 'Lacoochee':
+        return poly.Lacoochee
+      case 'CrystalSprings':
+        return poly.CrystalSprings
+      case 'Kathleen':
+        return poly.Kathleen
+      case 'Webster':
+        return poly.Webster
+      case 'Thonotosassa':
+        return poly.Thonotosassa
+      case 'Brooksville':
+        return poly.Brooksville
+      case 'Lutz':
+        return poly.Lutz
+      case 'Nobleton':
+        return poly.Nobleton
+      case 'PlantCity':
+        return poly.PlantCity
+      case 'Bushnell':
+        return poly.Bushnell
+      case 'Seffner':
+        return poly.Seffner
+      case 'SpringHill':
+        return poly.SpringHill
+      case 'Tampa':
+        return poly.Tampa
+      default:
+        return "There was no file";
+    }
   }
 
   render() {
-    const { location, map: {isReloading} } = this.props;
-    //const { location } = this.props;
-    console.log('the location is ', location);
+//    const { location, map: {isReloading} } = this.props;
+    const { location } = this.props;
+    const fileName = location.replace(/\s/g, "").replace('fl', "");
+    const file = this.getFile(fileName);
+
+    console.log('the location is ', file);
     return(
-      <MapWithAGeocode
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&libraries=geometry,drawing,places"
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `405px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-        location={location}
-        isReloading={isReloading}
-        mapLoaded={() => this.reloadMapFinish()}
-      />
-
-//       <iframe
-//   width="450"
-//   height="250"
-//   frameBorder="0" 
-//   style={{border:0}}
-
-//   src="https://www.google.com/maps/embed/v1/view?key=YOUR_KEY_HERE&center=28.3582411,-82.2208385">
-// </iframe>
+      <LoadMap data={file} />
     )
   }
 }
