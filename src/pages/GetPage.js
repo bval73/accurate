@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import RenderPage from 'components/RenderPage';
-import { fetchPageById } from 'actions/';
+import { fetchPageById } from 'actions';
 
 class GetPage extends Component {
 
@@ -15,13 +15,12 @@ class GetPage extends Component {
 
   render() {
     const { data, isFetching } = this.props;
-//debugger;
 
     if(isFetching){return null;}
 
     return (
       <section className='row'>
-        <h1>{data.length > 1 && data[0].pageTitle}</h1>
+        <h1>{data.length > 0 && data[0].pageTitle}</h1>
         { //data coming from componentDidMount()
           <RenderPage datas={data} />
         }
@@ -31,9 +30,8 @@ class GetPage extends Component {
 }
 
 //export default GetPage;
-
 const mapStateToProps = ({page}) => {
-  //debugger;
+
   return {
     data: page.item,
     isFetching: page.isFetching

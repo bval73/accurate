@@ -1,41 +1,25 @@
+
 import React, { Component } from 'react';
 
-//import PageSection from 'components/PageSection';
-import RenderPage from 'components/RenderPage';
-
-import { connect } from 'react-redux';
-//import connect from '../store/connectOld';
-
-import { fetchSoftWash } from 'actions/';
-
-
 class SoftWash extends Component {
-
-  componentDidMount() {
-    this.props.dispatch(fetchSoftWash()); //from actions..
-  }
-
   render() {
-    document.title = 'Accurate Softwash for all your exterior house cleaning needs.';
-    const { data, isFetching } = this.props;
-    if(isFetching){return null;}
     return (
-      <div className='row'>
-        <h1 className='text-center'>Soft Wash</h1>
-        { //data coming from componentDidMount()
-          <RenderPage datas={data} />
-        }
-      </div>
-     
+      <section className="row">
+        <h1>Soft Wash</h1>
+          <div className="col-md-6">
+            <img src="/images/slide2.jpg" className="img-fluid" alt="" /> 
+          </div>
+          <div className="col-md-6">
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <p>
+              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+          </div>
+        </section>
     );
   }
 }
 
-const mapStateToProps = ({softwash}) => {
-  return {
-    data: softwash.item,
-    isFetching: softwash.isFetching
-  }
-}
-
-export default connect(mapStateToProps)(SoftWash);
+export default SoftWash;

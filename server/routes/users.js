@@ -1,6 +1,5 @@
 
 const express = require('express');
-const { createPage } = require('../controllers/pages');
 const router = express.Router();
 const {
   login,

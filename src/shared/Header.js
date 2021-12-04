@@ -4,14 +4,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const refresh = () => {
-  setTimeout(() => { 
-    window.location.reload(); 
-  }, 5);
-}
+const Header = ({username, usertype, isAuth, logout}) => {
 
-
-const Header = ({username, userType, isAuth, logout}) => {
   return(
     <nav className="navbar navbar-expand-lg navbar-dark blue-green">
       <div className="container-fluid">
@@ -33,13 +27,29 @@ const Header = ({username, userType, isAuth, logout}) => {
               Services
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><Link onClick={refresh} className="dropdown-item" to="/page/roofWash/">Roof Wash</Link></li>
+                <li>
+                  <Link to="/roofWash" className="dropdown-item">
+                    Roof Wash
+                  </Link>
+                </li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><Link onClick={refresh} className="dropdown-item" to="/page/houseWash/">House Wash</Link></li>
+                <li>
+                  <Link className="dropdown-item" to="/houseWash">
+                    House Wash
+                  </Link>
+                </li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><Link onClick={refresh} className="dropdown-item" to="/page/softWash/">Soft Wash</Link></li>
+                <li>
+                  <Link className="dropdown-item" to="/softWash">
+                    Soft Wash
+                  </Link>
+                </li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><Link onClick={refresh} className="dropdown-item" to="/page/surfaceWash/">Surface Wash</Link></li>
+                <li>
+                  <Link  className="dropdown-item" to="/surfaceWash">
+                    Surface Wash
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item">
@@ -65,17 +75,30 @@ const Header = ({username, userType, isAuth, logout}) => {
                     Logout
                   </div>
                 </li>
-                <li className="nav-item">
-                  <div className="nav-link">
-                    Tech
-                  </div>
-                </li>
+              </React.Fragment>
+            }
+            {/* {usertype === 'admin' && isAuth &&
+            <React.Fragment>
+              <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/page/create">
+                Add Page
+              </Link>
+              </li>            
+            </React.Fragment>
+            } */}
+            <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/appointment">
+                  Appointment                  
+                </Link>
+              </li>
+            { isAuth &&
+              <React.Fragment>    
                 <li className="nav-item welcome-msg">
                   <div className="nav-link"> 
                     Welcome {username}
                   </div>
-              </li>
-            </React.Fragment>
+                </li>
+              </React.Fragment>
             }
           </ul>
         </div>
@@ -84,10 +107,10 @@ const Header = ({username, userType, isAuth, logout}) => {
   )
 }
 
-const mapStateToProps = ({auth: {username, userType, isAuth}}) => {
+const mapStateToProps = ({auth: {username, usertype, isAuth}}) => {
     return {
       username,
-      userType,
+      usertype,
       isAuth
     }
   }

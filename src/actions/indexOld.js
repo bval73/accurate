@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authService from 'services/auth-service';
-import axiosService from 'services/axios-service';
+import axiosService from 'services/AxiosService';
 
 import { FETCH_RENTAL_BY_ID_SUCCESS, 
   FETCH_RENTAL_BY_ID_INIT,
@@ -21,7 +21,7 @@ import { FETCH_RENTAL_BY_ID_SUCCESS,
   UPDATE_BOOKINGS} from './types';
 
   export const verifyRentalOwner = (rentalId) => {
-    return axiosInstance.get(`/rentals/${rentalId}/verify-user`)
+    return accAxios.get(`/rentals/${rentalId}/verify-user`)
   }
 
   export const reloadMap = () => {
@@ -217,9 +217,11 @@ export const register = (userData) => {
 
 const loginSuccess = () => {
   const username = authService.getUsername();
+  const usertype = authService.getUsertype();
   return {
     type: LOGIN_SUCCESS,
-    username
+    username,
+    usertype
   }
 }
 

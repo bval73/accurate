@@ -31,9 +31,21 @@ const initAuthReducer = () => {
     }
   }
 
+  const usertype = (state = '', action) =>{
+    switch(action.type) {
+      case 'USER_AUTHENTICATED':
+        return action.usertype;
+      case 'LOG_OUT_USER':
+        return '';
+      default:
+        return state;
+    }
+  }
+
   return combineReducers({
     isAuth,
-    username
+    username,
+    usertype
   })
 }// end initAuthReducer
 const auth = initAuthReducer();

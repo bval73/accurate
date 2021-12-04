@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Errors(props) {
   const errors = props.errors;
-  debugger
+//  debugger
 
   return(
     errors.length > 0 &&

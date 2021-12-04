@@ -1,3 +1,5 @@
+//useEffect like componentDidMount, componentDidUpdate and componentWillUnmount combined in class components but in functional components..  React will remember the function you passed and call it later after performing the DOM updates.
+
 import React, {useEffect} from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -11,10 +13,10 @@ import Routes from './Routes';
 //import Provider from './store/Provider';
 import { Provider } from 'react-redux';
 import { AuthProvider, useAuth } from 'providers/AuthProvider';
+import { MapProvider } from 'providers/MapProvider';
 
 import { initStore } from './store';
 
-import Footer from './shared/Footer';
 import AccBtn from './shared/AccBtn';
 
 const store = initStore();
@@ -23,7 +25,9 @@ const Providers = ({children}) => {
   return(
     <Provider store={store}>
       <AuthProvider> {/*HOC*/}
+        <MapProvider apiKey='thR0airtgI76hLSRiVQ0gA2LvOXmsVxz'>
         {children}
+        </MapProvider>
       </AuthProvider>
     </Provider>
   )
@@ -41,7 +45,7 @@ const AccApp = () => {
     <Router>
       <Header logout={authService.logout} />
       <Routes />
-      <Footer />
+      <Header logout={authService.logout} />
     </Router>
   )
 }
@@ -54,7 +58,7 @@ const App = () => {
         <div className="top-banner blue-green row">
           <span className="col-md-3">
             <i className='fa fa-map-marker'></i>
-            <a href='https://www.google.com/maps/place/35951+Lynan+Farms+Dr,+Dade+City,+FL+33525/@28.3582411,-82.2208385,3a,75y,359.2h,90t/data=!3m7!1e1!3m5!1sTuxiPcP3X33R9w9_ZOkG5g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3DTuxiPcP3X33R9w9_ZOkG5g%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D359.20242%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192!4m13!1m7!3m6!1s0x88c2ab560dd9fa63:0x478e3819a90e9c87!2s35951+Lynan+Farms+Dr,+Dade+City,+FL+33525!3b1!8m2!3d28.358934!4d-82.2208258!3m4!1s0x88c2ab560dd9fa63:0x478e3819a90e9c87!8m2!3d28.358934!4d-82.2208258!5m2!1e2!1e435951' target='_blank' rel="noreferrer"> Lynan Farms Dr. Dade City, Fl </a>
+            <a href='https://www.google.com/maps/place/Lynan+Farms+Dr,+Dade+City,+FL+33525/@28.3582518,-82.2214969,17z/data=!3m1!4b1!4m5!3m4!1s0x88c2ab55fa4c2133:0x2c2a13ac095b892c!8m2!3d28.3582471!4d-82.2193082' target='_blank' rel="noreferrer"> Lynan Farms Dr. Dade City, Fl </a>
           </span>
           <span className="col-md-2">
             <i className='fa fa-phone'></i>
@@ -87,15 +91,36 @@ const App = () => {
               </a>
             </div>
 
-            <div className='logo col-md-4 col-sm-6 d-none d-lg-block d-md-block'>
-              <b>Some of the area's we proudly serve in Florida:</b> Dade City, Saint Leo, San Antonio,	Wesley Chapel, Trilby,	Zephyrhills, Lacoochee, Crystal Springs,	Kathleen,	Land O Lakes,	Spring Hill,	Webster,	Tampa, Thonotosassa,	Brooksville, Lutz,	Nobleton, Plant City,	Bushnell, Seffner, Odessa
+            <div className='logo  areas col-md-4 col-sm-6 d-none d-lg-block d-md-block'>
+              <b>Some of the area's we proudly serve in Florida:</b> <br />
+              <a href='pressure-washing-dade-city' >Dade City</a>, 
+              <a href='pressure-washing-st-leo'>Saint Leo</a>,
+              <a href='pressure-washing-san-antonio'>San Antonio</a>,	
+              <a href='pressure-washing-wesley-chapel'>Wesley Chapel</a>, 
+              <a href='pressure-washing-trilby'>Trilby</a>,	
+              <a href='pressure-washing-zephyrills'>Zephyrhills</a>, 
+              <a href='pressure-washing-lacooche'>Lacoochee</a>, 
+              <a href='pressure-washing-crystal-springs'>Crystal Springs</a>,	
+              <a href='pressure-washing-kathleen'>Kathleen</a>,	
+              <a href='pressure-washing-land-o-lakes'>Land O Lakes</a>,	
+              <a href='pressure-washing-spring-hill'>Spring Hill</a>,	
+              <a href='pressure-washing-webster'>Webster</a>,	
+              <a href='pressure-washing-tampa'>Tampa</a>, 
+              <a href='pressure-washing-thonotosassa'>Thonotosassa</a>,	
+              <a href='pressure-washing-brooksville'>Brooksville</a>, 
+              <a href='pressure-washing-lutz'>Lutz</a>,	
+              <a href='pressure-washing-nobleton'>Nobleton</a>, 
+              <a href='pressure-washing-plant-city'>Plant City</a>,	
+              <a href='pressure-washing-bushnell'>Bushnell</a>, 
+              <a href='pressure-washing-seffner'>Seffner</a>, 
+              <a href='pressure-washing-odessa'>Odessa</a>
             </div>
 
             <div className='logo-right col-md-4 col-sm-6'>
             <a href="tel:8135551212">813-555-1212</a> 
               <AccBtn className='acc-btn contact'
                 text='Get Your FREE Quote'
-                href='/contact'
+                href='/appointment'
 //                  secondaryText=''
               />
             </div>

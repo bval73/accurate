@@ -1,6 +1,7 @@
 
 const express = require('express'),
-      router = express.Router();
+      router = express.Router(),
+      { authMiddleWare } = require('../controllers/users');
 
 const {
   getPages,
@@ -14,7 +15,7 @@ router.get('', getPages);
 
 router.get('/:pageName', getPageById);
 
-router.post('', createPage);
+router.post('', authMiddleWare, createPage);
 
 // router.delete('/:pageName', deletePage);
 

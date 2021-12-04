@@ -1,7 +1,3 @@
-//Pure function
-//Don't mutate arguments
-//No API calls, no route transitions
-//No function calls ie: Math.random()
 
 import { combineReducers } from 'redux';
 
@@ -39,3 +35,4 @@ const initPageReducer = () => {
 const page = initPageReducer();
 
 export default page;
+

@@ -9,7 +9,6 @@ export const capitalize = value => {
 }
 
 export const Error = ({children}) => {
-//  console.log('the children are ', children);
   return(
     <div className="alert alert-danger">
       {children}

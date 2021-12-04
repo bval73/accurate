@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+//import { Redirect } from 'react-router-dom';
 import { loginUser, userAuthenticated } from 'actions';
 import jwt from 'jsonwebtoken';
 import moment from 'moment';
@@ -10,7 +11,7 @@ const { createContext, useContext } = React;
 
 const AuthContext = createContext(null);
 
-//childrem anf disparch from props
+//children and dispatch from props
 const AuthBaseProvider = ({children, dispatch}) => { 
 
   const  checkAuthState = () => {
