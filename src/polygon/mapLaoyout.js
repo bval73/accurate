@@ -1,5 +1,5 @@
 var map = tt.map({
-    key: 'thR0airtgI76hLSRiVQ0gA2LvOXmsVxz',
+    key: 'yourmap key',
     container: 'map',
     zoom: 10.5,
     center: [-82.390443,28.214687],
