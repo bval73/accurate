@@ -12,7 +12,7 @@ class LoadMap extends Component {
     let zom = zoom ? zoom : 11
     console.log('the data is ',this.props);
     const map = tt.map({
-      key: 'thR0airtgI76hLSRiVQ0gA2LvOXmsVxz',
+      key: 'your key here',
       container: 'map',
       zoom: zom,
       center: center
