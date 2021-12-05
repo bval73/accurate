@@ -18,8 +18,8 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
     break;
     case 'team':
       data = {
-        from: "bvalentineii@hotmail.com",
-        to: "bvalentineii@hotmail.com",
+        from: "accuratesoftwash@hotmail.com",
+        to: "accuratesoftwash@hotmail.com",
         subject: `Message from ${name}`,
         html:team(name, comment, to)
       } 
