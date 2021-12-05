@@ -10,7 +10,7 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
   switch(template) {
     case 'thankyou':
       data = {  
-        from: "Accurate Softwash <bvalentineii@hotmail.com>",
+        from: "Accurate Softwash <accuratesoftwash.com>",
         to,
         subject: `Thank you for your inquiry ${name}`,
         html:thankyou(name)
