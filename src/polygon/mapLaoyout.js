@@ -1,5 +1,6 @@
 var map = tt.map({
-    key: 'yourmap key',
+
+    key: process.env.REACT_APP_TOMTOM_API_KEY,
     container: 'map',
     zoom: 10.5,
     center: [-82.390443,28.214687],

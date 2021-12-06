@@ -10,7 +10,7 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
   switch(template) {
     case 'thankyou':
       data = {  
-        from: "Accurate Softwash <accuratesoftwash.com>",
+        from: `Accurate Softwash <{process.env.REACT_APP_EMAIL}>`,
         to,
         subject: `Thank you for your inquiry ${name}`,
         html:thankyou(name)
@@ -18,8 +18,8 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
     break;
     case 'team':
       data = {
-        from: "accuratesoftwash@hotmail.com",
-        to: "accuratesoftwash@hotmail.com",
+        from: process.env.REACT_APP_EMAIL,
+        to: process.env.REACT_APP_EMAIL,
         subject: `Message from ${name}`,
         html:team(name, comment, to)
       } 

@@ -9,10 +9,12 @@ class LoadMap extends Component {
   
   insertMap() {
     const {type, coords, center, zoom } = this.props.data;
+    console.log('the props are ', this.props)
     let zom = zoom ? zoom : 11
     console.log('the data is ',this.props);
     const map = tt.map({
-      key: 'your key here',
+
+      key: process.env.REACT_APP_TOMTOM_API_KEY,
       container: 'map',
       zoom: zom,
       center: center
