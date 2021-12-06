@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 // import { tt, PolygonBuilder, color } from '@tomtom-international/web-sdk-maps';
 import tt from '@tomtom-international/web-sdk-maps';
-import polygon from 'polygon/DadeCity';
+
 
 const { createContext, useContext } = React;
 
 const MapContext = createContext(null);
 
 //childrem and dispatch from props
-export const MapProvider = ({children, apiKey}) => {
+export const MapProvider = ({children}) => {
   const cache = useRef({});
 
   const normalizeLocation = (location) => {
@@ -29,7 +29,7 @@ export const MapProvider = ({children, apiKey}) => {
 
   const initMap = () => {
     const map = tt.map({
-      key: apiKey,
+      key: process.env.REACT_APP_TOMTOM_API_KEY,
       container: 'acc-map',
 //Below blows error Unhandled Rejection (TypeError): Failed to fetch      
       // style: 'tomtom://vector/1/basic-main', 
@@ -73,7 +73,7 @@ export const MapProvider = ({children, apiKey}) => {
   const requestGeoLocation = location => {
     //check cache for location first
     return axios
-      .get(`https://api.tomtom.com/search/2/geocode/${location}.JSON?key=${apiKey}`)
+      .get(`https://api.tomtom.com/search/2/geocode/${location}.JSON?key=${process.env.REACT_APP_TOMTOM_API_KEY}`)
       .then(res => res.data)
       .then(tomRes =>{
         const results = tomRes.results;

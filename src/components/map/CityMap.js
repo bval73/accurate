@@ -72,6 +72,7 @@ class CityMap extends Component{
   render() {
 //    const { location, map: {isReloading} } = this.props;
     const { location } = this.props;
+    console.log('the props are ', this.props)
     const fileName = location.replace(/\s/g, "").replace('fl', "");
     const file = this.getFile(fileName);
 

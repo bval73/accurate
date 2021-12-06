@@ -27,9 +27,12 @@ yarn-error.log*
 /server/config/dev.js
 /.vscode
 server/fakeDb/data/rentals.js
+server/fakeDb/data/*
 houseLink.js
 src/*.svg
 src/*.png
 src/*.b64
 public/images
 public/*.png
+.env
+src/polygon/mapLayout.js

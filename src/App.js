@@ -19,13 +19,14 @@ import { initStore } from './store';
 
 import AccBtn from './shared/AccBtn';
 
+
 const store = initStore();
 
 const Providers = ({children}) => {
   return(
     <Provider store={store}>
       <AuthProvider> {/*HOC*/}
-        <MapProvider apiKey='thR0airtgI76hLSRiVQ0gA2LvOXmsVxz'>
+        <MapProvider>
         {children}
         </MapProvider>
       </AuthProvider>
@@ -98,8 +99,8 @@ const App = () => {
               <a href='pressure-washing-san-antonio'>San Antonio</a>,	
               <a href='pressure-washing-wesley-chapel'>Wesley Chapel</a>, 
               <a href='pressure-washing-trilby'>Trilby</a>,	
-              <a href='pressure-washing-zephyrills'>Zephyrhills</a>, 
-              <a href='pressure-washing-lacooche'>Lacoochee</a>, 
+              <a href='pressure-washing-zephyrhills'>Zephyrhills</a>, 
+              <a href='pressure-washing-lacoochee'>Lacoochee</a>, 
               <a href='pressure-washing-crystal-springs'>Crystal Springs</a>,	
               <a href='pressure-washing-kathleen'>Kathleen</a>,	
               <a href='pressure-washing-land-o-lakes'>Land O Lakes</a>,	

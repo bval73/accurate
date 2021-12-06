@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 //import * as actions from 'actions/indexOld';
 //import connect from '../store/connectOld';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import ContactForm from 'components/form/ContactForm';
 import { sendEmail } from 'actions';
@@ -21,7 +20,6 @@ class Contact extends Component {
   contactSubmit = (contactData) => {
     this.setState({contactData});
     this.props.dispatch(sendEmail(contactData));
-//    this.setState({shouldRedirect: true});
     this.setState({
       modalMessage: {
         messageText:'Thank you for your inquiry. We will respond within 24 hours if the comment requires one'
@@ -32,11 +30,8 @@ class Contact extends Component {
 
   render() {
     document.title = 'Contact Accurate Powerwash for your free quote.';
-    const { shouldRedirect, errors, modalMessage:{messageText} } = this.state;
+    const { errors, modalMessage:{messageText} } = this.state;
 
-    if(shouldRedirect) {
-      return <Redirect to={{pathname: '/Thankyou', state:{message: 'You have been succesfuly registered.'}}} /> //Need to have modal pop up instead of going to thankyou page.
-    }
 //    const { user, isAuth, errors } = this.props;
     return (
        <div className="row">
