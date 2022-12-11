@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth } from 'providers/AuthProvider';
+import { useAuth } from '../../providers/AuthProvider';
 
 
 const GuestRoute = ({children, ...rest}) => {

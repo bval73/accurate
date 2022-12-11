@@ -15,7 +15,6 @@ const express = require('express'),
 
       FakeDb = require('./fakeDB/FakeDB'),
 
-
       PORT = process.env.PORT || 3001;
 
       mongoose.connect(config.DB_URI, {
@@ -41,12 +40,9 @@ app.use(errorHandler);
 
 //Custom Middleware can be used in routes or other app.use, app.get ect.
 app.get('/api/v1/secret', authMiddleWare, (req, res) =>  {
-  // console.log('/api/v1/secret', res.locals);
   const user = res.locals.user;
   return res.json({message: `Secret message don't share ${user.username}`})
 });
-
-
 
 //user
 app.use('/api/v1/users', userRoutes);
@@ -63,3 +59,4 @@ app.use('/api/v1/jobs', jobRoutes);
 app.listen(PORT, () => {
   console.log('Server is running on port:', PORT);
 });  
+

@@ -1,6 +1,4 @@
-
-
-import axiosService from 'services/AxiosService';
+import axiosService from '../services/AxiosService';
 const { accAxios } = axiosService;
 
 // page by id / pagename
@@ -25,3 +23,4 @@ export const createPage = page => {
     // }
     return accAxios.post('/pages', page);
   }
+  

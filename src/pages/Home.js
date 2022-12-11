@@ -21,10 +21,9 @@ class Home extends Component {
   renderPages = (pages) => 
     pages.map(page => 
       <div className={page.className} key={page._id}>
-        {/* <RenderPage rental={rental}/> */}
         <a href={page.pageTitle}>
           <div className='imageHover'>{page.sectionTitle}</div>
-          <img src={page.image} className="img-fluid" alt=""/>
+          <img src={`${page.image}`} className="img-fluid" alt=""/>
         </a>
         {/* <span>{page.pageTitle}</span> */}
         
@@ -65,3 +64,4 @@ const mapStateToProps = ({page}) => {
 }
 
 export default connect(mapStateToProps)(Home);
+

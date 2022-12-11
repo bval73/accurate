@@ -97,7 +97,7 @@ const RegisterForm = ({onSubmit}) => {
         }
       </div> 
       <div className="form-group">
-        <label htmlFor="notify">Receive Notification</label>
+        <label htmlFor="notify">Receive Notifications</label>
         <input 
           type='checkBox' 
           name='notify' 

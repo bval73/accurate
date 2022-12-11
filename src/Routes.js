@@ -7,25 +7,25 @@ import {
   Switch 
 } from "react-router-dom";
 
-import AuthRoute from 'components/auth/AuthRoute';
-import GuestRoute from 'components/auth/GuestRoute';
+import AuthRoute from './components/auth/AuthRoute';
+import GuestRoute from './components/auth/GuestRoute';
 
-import Home from 'pages/Home';
-import Services from 'pages/Services';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
-import Intro from 'blog/Difference';
-import Contact from 'pages/Contact';
-import CityPage from 'pages/CityPage';
-import GetPage from 'pages/GetPage';
-import SecretPage from 'pages/SecretPage';
-import PageNew from 'pages/PageNew';
-import Thankyou from 'pages/ThankYou';
-import Appointment from 'pages/Appointment';
-import SurfaceWash from 'pages/SurfaceWash';
-import RoofWash from 'pages/RoofWash';
-import HouseWash from 'pages/HouseWash';
-import SoftWash from 'pages/SoftWash';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Intro from './blog/Difference';
+import Contact from './pages/Contact';
+import CityPage from './pages/CityPage';
+// import GetPage from './pages/GetPage';
+import SecretPage from './pages/SecretPage';
+// import PageNew from './pages/PageNew';
+import Thankyou from './pages/ThankYou';
+import Appointment from './pages/Appointment';
+import SurfaceWash from './pages/SurfaceWash';
+import RoofWash from './pages/RoofWash';
+import HouseWash from './pages/HouseWash';
+import SoftWash from './pages/SoftWash';
 
 
 const Routes = () => {
@@ -60,11 +60,11 @@ const Routes = () => {
         </AuthRoute>
         <Route exact path="/page/:pageName" component={GetPage} /> */}
 
-        <Route path="/pressure-washing*" component={CityPage} />
+        <Route path="*/pressure-washing*" component={CityPage} />
 
         <Route exact path="/Thankyou" component={Thankyou} />
         
-        <Route exact path="/appointment" component={Appointment} />
+        <Route exact path="*/appointment" component={Appointment} />
 
       </Switch>
     </main>

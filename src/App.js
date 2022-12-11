@@ -1,19 +1,18 @@
 //useEffect like componentDidMount, componentDidUpdate and componentWillUnmount combined in class components but in functional components..  React will remember the function you passed and call it later after performing the DOM updates.
 
 import React, {useEffect} from 'react';
+// import { BrowserRouter as Router, Link } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import './App.css';
-//import logo from './accurateSmall.svg';
-//import logo from '/images/NEWLOGOSMALL.svg';
 
 import Header from './shared/Header';
 import Routes from './Routes';
 
 //import Provider from './store/Provider';
 import { Provider } from 'react-redux';
-import { AuthProvider, useAuth } from 'providers/AuthProvider';
-import { MapProvider } from 'providers/MapProvider';
+import { AuthProvider, useAuth } from './providers/AuthProvider';
+import { MapProvider } from './providers/MapProvider';
 
 import { initStore } from './store';
 
@@ -27,7 +26,7 @@ const Providers = ({children}) => {
     <Provider store={store}>
       <AuthProvider> {/*HOC*/}
         <MapProvider>
-        {children}
+          {children}
         </MapProvider>
       </AuthProvider>
     </Provider>
@@ -93,8 +92,9 @@ const App = () => {
             </div>
 
             <div className='logo  areas col-md-4 col-sm-6 d-none d-lg-block d-md-block'>
-              <b>Some of the area's we proudly serve in Florida:</b> <br />
-              <a href='pressure-washing-dade-city' >Dade City</a>, 
+              <div className='w-100'><b>Some of the area's we proudly clean in Florida:</b></div> 
+{/* change anchors to Links with to={{path="some path here"}} */}
+              <a href="pressure-washing-dade-city" >Dade City</a>, 
               <a href='pressure-washing-st-leo'>Saint Leo</a>,
               <a href='pressure-washing-san-antonio'>San Antonio</a>,	
               <a href='pressure-washing-wesley-chapel'>Wesley Chapel</a>, 
@@ -122,7 +122,6 @@ const App = () => {
               <AccBtn className='acc-btn contact'
                 text='Get Your FREE Quote'
                 href='/appointment'
-//                  secondaryText=''
               />
             </div>
         </div>
