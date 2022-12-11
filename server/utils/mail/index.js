@@ -10,7 +10,7 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
   switch(template) {
     case 'thankyou':
       data = {  
-        from: `Accurate Softwash <{process.env.REACT_APP_EMAIL}>`,
+        from: `Accurate Softwash <{GMAIL_USR}>`,
         to,
         subject: `Thank you for your inquiry ${name}`,
         html:thankyou(name)
@@ -18,8 +18,8 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
     break;
     case 'team':
       data = {
-        from: process.env.REACT_APP_EMAIL,
-        to: process.env.REACT_APP_EMAIL,
+        from: config.GMAIL_USR,
+        to,
         subject: `Message from ${name}`,
         html:team(name, comment, to)
       } 
@@ -32,11 +32,11 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
 }
 
 const sendEmail = (to, name, token, type, actionData, comment) => {
-
+console.log('sendEmail ',to, name, token, type, actionData, comment)
   const smptTransport = mailer.createTransport({
-    service: "hotmail",
+    service: "gmail",
     auth: {
-      user: config.GMAIL_USR, //linked to me hotmail account for now
+      user: config.GMAIL_USR, //linked to me gmail account for now
       pass: config.GMAIL_PASS
     }
   });
@@ -49,7 +49,6 @@ const sendEmail = (to, name, token, type, actionData, comment) => {
       smptTransport.close();
       return err;
     } else {
-//      console.log(res);
       smptTransport.close();
       return res;
     }

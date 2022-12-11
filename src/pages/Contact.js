@@ -1,8 +1,5 @@
 
 import React, { Component } from 'react';
-
-//import * as actions from 'actions/indexOld';
-//import connect from '../store/connectOld';
 import { connect } from 'react-redux';
 
 import ContactForm from 'components/form/ContactForm';
@@ -41,7 +38,6 @@ class Contact extends Component {
             {messageText}
           </div>
          }
-         {console.log('the state is ',this.state)}
 
           <ContactForm onSubmit={this.contactSubmit} />
           <ApiErrors errors={errors}/>

@@ -1,13 +1,13 @@
 
 const User = require('../models/user');
-const jwt = require('jsonwebtoken');
+const jose = require('jose');
 const config = require('../config');
 
 
 exports.login = (req, res) =>{
 
   const { email, password } = req.body;
-
+  
   if(!password || !email){
     return res.sendApiError(
       {title: 'Data missing', 
@@ -15,7 +15,9 @@ exports.login = (req, res) =>{
       });
   }
 
-  User.findOne({email}, (err, user) => {
+  User.findOne({email}, async (err, user) => {
+    const secret = new TextEncoder().encode(config.SECRET);
+    const alg = 'HS256';
     if(err){
       return res.mongoError(err);
     }
@@ -30,11 +32,18 @@ exports.login = (req, res) =>{
 
     //hasSamePassword in model
     if(user.hasSamePassword(password)) {
-      const token = jwt.sign({
-        userId: user.id,
-        username: user.username,
-        usertype: user.usertype
-      }, config.SECRET, { expiresIn: '24h' });
+      console.log('user info controllers ',user);
+      const token = await new jose.SignJWT({
+        'userId': user.id,
+        'username': user.username,
+        'usertype': user.usertype 
+      })
+      .setProtectedHeader({ alg })
+      .setIssuer('http://localhost:3000')
+      .setAudience('public')
+      .setExpirationTime('24h')
+      .sign(secret);
+      console.log("token from controllers/users ",token)
       return res.json(token);
     }else{
       return res.sendApiError(
@@ -42,7 +51,6 @@ exports.login = (req, res) =>{
           detail: 'Incorrect password.'
         });
     }
-
   })
 }
 
@@ -93,16 +101,15 @@ exports.register = (req, res) => {
   })
 }// end register
 
-exports.authMiddleWare = function(req, res, next){
+exports.authMiddleWare = async function(req, res, next){
   const token = req.headers.authorization;
   if(token){
-      const {user, err} = parseToken(token);
-
+      const {payload, err} = await parseToken(token);
       if(err){
         return res.status(422).send(err);
       }
 
-      User.findById(user.userId, (err, foundUser) => {
+      User.findById(payload.userId, (err, foundUser) => {
           if(err){
             return res.mongoError(err);
           }
@@ -121,11 +128,19 @@ exports.authMiddleWare = function(req, res, next){
 }//end authMiddleWare
 
 
-function parseToken(token){
+async function parseToken(token){
   try {
-    const user = jwt.verify(token.split(' ')[1], config.SECRET);
-    return { user };
+    const secret = new TextEncoder().encode(config.SECRET);
+    const user = token.split(' ')[1];
+    console.log('user is ',user)
+    const { payload, protectedHeader } = await jose.jwtVerify(user, secret, {
+      issuer: 'http://localhost:3000',
+      audience: 'public'
+    });
+    console.log('parseToken ',payload)
+    return { payload };
   }catch(err){
+    console.log('there was an error ',err)
     return {err: err.message};
   }
   

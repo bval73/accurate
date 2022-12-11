@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 //import { MapWithAGeocode } from './TomMap';
 
 import { connect } from 'react-redux';
-
 import {reloadMapFinish} from 'actions';
-
 import * as poly from '../../polygon';
 import LoadMap from './LoadMap';
 
@@ -17,6 +15,8 @@ class CityMap extends Component{
   }
 
   getFile(file) {
+    // const fileName = poly + `.${file}`
+    // return fileName;
     switch (file) {
       case 'DadeCity':
         return poly.DadeCity;
@@ -65,18 +65,16 @@ class CityMap extends Component{
       case 'Tampa':
         return poly.Tampa
       default:
-        return "There was no file";
+        return poly.DadeCity;
     }
   }
 
   render() {
 //    const { location, map: {isReloading} } = this.props;
     const { location } = this.props;
-    console.log('the props are ', this.props)
     const fileName = location.replace(/\s/g, "").replace('fl', "");
     const file = this.getFile(fileName);
 
-    console.log('the location is ', file);
     return(
       <LoadMap data={file} />
     )

@@ -1,8 +1,6 @@
 
-import axiosService from 'services/AxiosService';
+import axiosService from '../services/AxiosService';
 const { accAxios } = axiosService;
-
-//import axios from 'axios';
 
 export const extractApiErrors = (resError) => {
   let errors = [{title: 'Error', detail: 'Ooops something went wrong!!'}];

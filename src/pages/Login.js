@@ -1,17 +1,9 @@
+
+
 import React, { Component } from 'react';
-//import store from '../store'; //fake DB
-
-//import { StateContext} from '../state-context';
-
-//import { connect } from 'react-redux';
-
-//import connect from '../store/connect';
-
 import LoginForm from 'components/form/LoginForm';
 import ApiErrors from 'components/form/ApiErrors';
-//import { loginUser } from 'actions';
 import { withAuth } from 'providers/AuthProvider'; //HOC
-
 import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
@@ -27,13 +19,14 @@ class Login extends Component {
   
 
   signIn = (loginData) => {
+    console.log("props ",this.props);
     this.props.auth.signIn(loginData)
     .then((token) => {
       this.setState({token, shouldRedirect: true});
     })
     .catch(err => {
       this.setState({errors: err})
-    })
+    });
   }
 
   render() {
@@ -46,10 +39,11 @@ class Login extends Component {
     if(shouldRedirect) {
       return <Redirect to={{pathname: backPage}} />
     }
+
     return (
       <div className="acc-form">
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-6">
             <h1 className="page-title">Login</h1>
             {message &&
               <div className="alert alert-success">
@@ -71,9 +65,5 @@ class Login extends Component {
   }
 }
 
-//Login.contextType = StateContext;
-// will need to change to user for the correct information
-
-
 export default withAuth(Login);
-//export default connect()(withAuth(Login));
+

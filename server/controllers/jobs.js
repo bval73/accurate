@@ -61,7 +61,6 @@ exports.createJob = (req, res) => {
     if(err) {
       return res.mongoError(err);
     }
-//    console.log('Controllers createJob', createdJob);
     return res.json(createdJob);
   });
 }

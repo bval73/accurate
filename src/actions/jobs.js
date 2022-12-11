@@ -1,5 +1,5 @@
 
-import axiosService from 'services/AxiosService';
+import axiosService from '../services/AxiosService';
 const { accAxios } = axiosService;
 
 

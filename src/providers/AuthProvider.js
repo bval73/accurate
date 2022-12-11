@@ -4,18 +4,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 //import { Redirect } from 'react-router-dom';
 import { loginUser, userAuthenticated } from 'actions';
-import jwt from 'jsonwebtoken';
+import * as jose from 'jose';
 import moment from 'moment';
 
 const { createContext, useContext } = React;
 
 const AuthContext = createContext(null);
 
+// const secret = process.env.SECRET;
+const secret = new TextEncoder().encode('cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2');
+
 //children and dispatch from props
 const AuthBaseProvider = ({children, dispatch}) => { 
 
-  const  checkAuthState = () => {
-    const decodedToken = decodeToken(getToken());
+  const  checkAuthState = async () => {
+    const decodedToken = await decodeToken(getToken());
+    
     if(decodedToken && moment().isBefore(getExpiration(decodedToken))) {
       dispatch(userAuthenticated(decodedToken));
     }
@@ -27,6 +31,7 @@ const AuthBaseProvider = ({children, dispatch}) => {
   }
 
   const isTokenValid = (decodedToken) => {
+    console.log('isTokenValid ',moment().isBefore(getExpiration(decodedToken)))
     return decodeToken && moment().isBefore(getExpiration(decodedToken));
   }
 
@@ -38,9 +43,24 @@ const AuthBaseProvider = ({children, dispatch}) => {
     return sessionStorage.getItem('acc-token');
   } 
 
-  const decodeToken = token => {
-    const decoded = jwt.decode(token);
-    return decoded;
+  const decodeToken = async token => {
+    if(token && token !== '[object Object]'){
+      try {
+        const { payload, protectedHeader } = await jose.jwtVerify(token, secret, {
+          issuer: 'http://localhost:3000',
+          audience: 'public'
+        })
+        
+        return payload;
+
+      } catch (err) {
+        // this.logout();
+        sessionStorage.removeItem('acc-token');
+        dispatch({type: 'LOG_OUT_USER'});
+      }
+    }else{
+      return null;
+    }
   }
 
   const logout = () => {

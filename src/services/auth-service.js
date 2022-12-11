@@ -1,4 +1,5 @@
-import * as jwt from 'jsonwebtoken';
+
+import * as jose from 'jose';
 import * as moment from 'moment';
 
 class AuthService{
@@ -11,7 +12,7 @@ class AuthService{
   }
 
   decode(token) {
-    return jwt.decode(token);
+    return jose.decode(token);
   }
 
   saveToken(token) {

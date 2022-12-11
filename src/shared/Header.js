@@ -20,7 +20,7 @@ const Header = ({username, usertype, isAuth, logout}) => {
           {/* <ul className="navbar-nav ms-auto mb-2 mb-lg-0"> */}
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/home">Home</Link>
+              <Link className="nav-link" aria-current="page" to="/">Home</Link>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

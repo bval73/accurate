@@ -1,9 +1,7 @@
-
 import React from 'react';
-
 import { useForm } from 'react-hook-form';
 
-const Input = ({props}) => {
+export const Input = (...props) => {
   console.log('props are ', props);
   const {input,
     label,
@@ -40,5 +38,4 @@ const Input = ({props}) => {
   );
 }
 
-export default Input;
-
+//export default Input;

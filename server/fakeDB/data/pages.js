@@ -8,7 +8,7 @@ const pages = [
     "section": 1,
     "image":"",
     "className": "col-md-6",
-    "p":["<a href='/'>Lorem Ipsum is simply dummy text</a> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
+    "p":["&lt;a href='/'&gt;Lorem Ipsum is simply dummy text</a> of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
     "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     ]
   },
@@ -95,7 +95,7 @@ const pages = [
     "sectionTitle": "Clean up your driveway, patio and pool deck",
     "section": 1,
     "className": "col-md-4 image-div",
-    "image":"https://www.maralagoclub.com/images/dynamic/getImage.gif?ID=100136",
+    "image":"https://www.maralagoclub.com/images/dynamic/getImage.gif?ID=100388",
     "p":[]
   },
   {
@@ -105,7 +105,7 @@ const pages = [
     "sectionTitle": "Add more curb appeal to your house",
     "section": 1,
     "className": "col-md-4 image-div",
-    "image":"https://www.maralagoclub.com/images/dynamic/getImage.gif?ID=100136",
+    "image":"https://www.maralagoclub.com/images/dynamic/getImage.gif?ID=100388",
     "p":[]
   },
   {
@@ -115,7 +115,7 @@ const pages = [
     "sectionTitle": "Make your roof look like new",
     "section": 1,
     "className": "col-md-4 image-div",
-    "image":"https://www.maralagoclub.com/images/dynamic/getImage.gif?ID=100136",
+    "image":"https://www.maralagoclub.com/images/dynamic/getImage.gif?ID=100388",
     "p":[]
   }
 ]

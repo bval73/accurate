@@ -31,7 +31,6 @@ class GetPage extends Component {
 
 //export default GetPage;
 const mapStateToProps = ({page}) => {
-
   return {
     data: page.item,
     isFetching: page.isFetching

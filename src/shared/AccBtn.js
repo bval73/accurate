@@ -15,7 +15,6 @@ class AccBtn extends Component {
   }
   render(props) {
     const {className, text, secondaryText, href} = this.props;
-    // const {className, text, href} = this.props;
 
     return (
       <div className={className}>

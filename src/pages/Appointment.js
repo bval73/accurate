@@ -1,18 +1,17 @@
 
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import moment from 'moment';
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
+import * as jose from 'jose';
 import { Redirect } from 'react-router-dom';
-import { createJob, sendApptEmail } from 'actions';
+import { createJob, sendApptEmail } from '../actions';
 
 class Appointment extends Component {
 
   constructor() {
     super();
-
     this.state = {
       proposedAppointment: {
         date: null,
@@ -24,7 +23,8 @@ class Appointment extends Component {
       },
       shouldRedirect: false,
       error: null,
-      message: null
+      message: null,
+      secret: process.env.SECRET
     }
   }
 
@@ -32,9 +32,15 @@ class Appointment extends Component {
     return sessionStorage.getItem('acc-token');
   } 
 
-  decodeToken = token => {
-    const decoded = jwt.decode(token);
-    return decoded.userId;
+  decodeToken = async token => {
+    // const decoded = jwt.decode(token);
+    const secret = new TextEncoder().encode('cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2');
+    const { payload, protectedHeader } = await jose.jwtVerify(token, secret, {
+      issuer: 'http://localhost:3000',
+      audience: 'public'
+    });
+    
+    return payload.userId;
   }
 
   handleApply = (event, {startDate}) => {
@@ -114,7 +120,6 @@ class Appointment extends Component {
                   containerStyles:{display: 'block'},
                   isInvalidDate: this.checkInvalidDates,
                   startDate: moment().add(1,'days').startOf('hour').toDate(),
-//                  startDate: moment().add(1,'days'),
                   locale: {
                     format: 'MM-DD-YYYY hh:mm A',
                   },

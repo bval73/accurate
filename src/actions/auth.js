@@ -1,5 +1,5 @@
 
-import axiosService from 'services/AxiosService';
+import axiosService from '../services/AxiosService';
 import { extractApiErrors } from './index';
 const { accAxios } = axiosService;
 
@@ -14,6 +14,7 @@ export const registerUser = (registerData) => {
 }
 
 export const loginUser = (loginData) => {
+  console.log("loginData is ",loginData);
   return accAxios
     .post('/users/login', loginData)
     .then(res => res.data)

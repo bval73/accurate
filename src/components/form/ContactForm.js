@@ -4,7 +4,7 @@ import React from 'react';
 //Input is throwing error
 //'Input' is not exported from 'shared/form/Input'.
 //Need to fix it
-//import { Input } from 'shared/form/Input';
+// import { Input } from 'shared/form/Input';
 
 //import { TextArea } from 'shared/form/TextArea';
 
@@ -229,8 +229,10 @@ const ContactForm = ({onSubmit}) => {
 
           <div className='col-md-6 col-sm-6'>
             <h5>Located:</h5>
-            1313 Mocking Bird Ln <br/>
-            Disney Land Fl 33666
+
+            1313 Lynan Farms Drive <br/>
+            Dade City FL 33525
+
           </div>
           <div className='col-md-6 col-sm-6'>
             <h5>Business Hours:</h5>

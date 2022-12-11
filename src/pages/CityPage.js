@@ -6,7 +6,6 @@ class CityPage extends Component {
   getCity() {
     let currentCity = window.location.href.split("/").pop().split("-");
     let city = '';
-//    let cityMap = '';
     const cityLength = currentCity.length;
 
     switch(cityLength) {

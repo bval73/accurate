@@ -1,7 +1,6 @@
 @import './colors';
 @import './header';
 @import './carousel';
-@import 'font-awesome';
 @import 'forms';
 @import 'tommap';
 @import 'home';
@@ -9,12 +8,7 @@
 
 .spv-container{
   padding: 50px 0;
-  // section {border: 2px solid #abceba;}
 }
-
-// .title{
-//   font-size: 100px;
-// }
 
 h1, h5{
   color: #a54f23;

@@ -1,17 +1,13 @@
 
-
 import React, { Component } from 'react';
 import tt from '@tomtom-international/web-sdk-maps';
 
-
-
 class LoadMap extends Component {
-  
   insertMap() {
     const {type, coords, center, zoom } = this.props.data;
-    console.log('the props are ', this.props)
+    // console.log('the props are ', this.props);
     let zom = zoom ? zoom : 11
-    console.log('the data is ',this.props);
+    // console.log('the data is ',this.props);
     const map = tt.map({
 
       key: process.env.REACT_APP_TOMTOM_API_KEY,

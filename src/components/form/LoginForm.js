@@ -32,7 +32,6 @@ const LoginForm = ({onSubmit}) => {
           className="form-control"
           id="email"
         />
- 
         <FormError errors={errors} name="email">
           {(message) => <p>{message}</p>}
         </FormError>
@@ -44,7 +43,7 @@ const LoginForm = ({onSubmit}) => {
           {
             required:'Password is required', 
             minLength: {value:8, message:'Length of password must be a min of 8 characters!!!'}
-          })} 
+          })}
           type="password"
           className="form-control"
           id="password" 
