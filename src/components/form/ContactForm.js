@@ -229,8 +229,10 @@ const ContactForm = ({onSubmit}) => {
 
           <div className='col-md-6 col-sm-6'>
             <h5>Located:</h5>
+
             1313 Lynan Farms Drive <br/>
             Dade City FL 33525
+
           </div>
           <div className='col-md-6 col-sm-6'>
             <h5>Business Hours:</h5>

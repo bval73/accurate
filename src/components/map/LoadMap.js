@@ -9,6 +9,7 @@ class LoadMap extends Component {
     let zom = zoom ? zoom : 11
     // console.log('the data is ',this.props);
     const map = tt.map({
+
       key: process.env.REACT_APP_TOMTOM_API_KEY,
       container: 'map',
       zoom: zom,
