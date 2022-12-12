@@ -6,7 +6,7 @@ const { accAxios } = axiosService;
 // job
 export const fetchJob = () => async dispatch => {
   dispatch({type: 'IS_FETCHING_JOB'});
-  console.log('actions fetch job')
+  // console.log('actions fetch job')
   const res = await accAxios.get('/jobs');
     //send to reducer
   dispatch({

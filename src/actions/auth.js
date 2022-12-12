@@ -14,7 +14,6 @@ export const registerUser = (registerData) => {
 }
 
 export const loginUser = (loginData) => {
-  console.log("loginData is ",loginData);
   return accAxios
     .post('/users/login', loginData)
     .then(res => res.data)

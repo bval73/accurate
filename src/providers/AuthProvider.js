@@ -31,7 +31,6 @@ const AuthBaseProvider = ({children, dispatch}) => {
   }
 
   const isTokenValid = (decodedToken) => {
-    console.log('isTokenValid ',moment().isBefore(getExpiration(decodedToken)))
     return decodeToken && moment().isBefore(getExpiration(decodedToken));
   }
 

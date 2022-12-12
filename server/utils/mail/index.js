@@ -32,7 +32,6 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
 }
 
 const sendEmail = (to, name, token, type, actionData, comment) => {
-console.log('sendEmail ',to, name, token, type, actionData, comment)
   const smptTransport = mailer.createTransport({
     service: "gmail",
     auth: {
