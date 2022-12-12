@@ -14,7 +14,7 @@ exports.users = [{
 {
   _id: user2Id,
   username: "Test User2",
-  email: none@none.com",
+  email: "none@none.com",
   password: "",
   notify: true
 }
