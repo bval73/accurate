@@ -31,9 +31,6 @@ const ContactForm = ({onSubmit}) => {
       city: 'dade city',
       state: 'fl'
     }
-    // const street = 'lynan farms dr.';
-    // const city = 'dade city';
-    // const state = 'fl';
     return info.street && info.city && info.state + "," + info.city + ',' + info.street;
   }
 
@@ -41,10 +38,6 @@ const ContactForm = ({onSubmit}) => {
     <>
     <section className='col-md-6'>
       <form onSubmit={handleSubmit(onSubmit)} className='acc-form'>
-        {/* <Input
-          type="text"
-          class="form-group col-md-6"
-        /> */}
         <div className="form-group row">
           <div className="col-md-6 col-sm-6">
             <label htmlFor="fname">First Name</label>
@@ -209,13 +202,6 @@ const ContactForm = ({onSubmit}) => {
             >
               Submit
             </button>
-
-            {/* <AccModal 
-              title='Thank you for your inquiry' 
-              subTitle='We will respond within 24 hours if the comment requires one'
-            >
-            </AccModal> */}
-
           </div>
       </form>
       </section>
