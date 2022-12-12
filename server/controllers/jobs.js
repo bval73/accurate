@@ -2,8 +2,6 @@
 //TODO: NEED UPDATE FOR WHEN JOB IS COMPLETED AND FOR TECH TO BE ASSIGNED
 
 const Job = require('../models/job');
-// const jwt = require('jsonwebtoken');
-// const config = require('../config');
 
 //UTILS
 const { sendEmail } = require('../utils/mail/index');
@@ -51,7 +49,6 @@ exports.getJobByDtTech = (req, res) => {
   })  //.sort({ section: 'asc', side: 'asc'});
 };
 
-//36
 exports.createJob = (req, res) => {
   
   const jobData = req.body;
@@ -77,8 +74,6 @@ exports.assignTech = (req, res) => {
 
 exports.sendApptEmail = (req, res) => {
   const { time, date, day, jobType, owner:{username, email}} = req.body.data;
-//  console.log('Controllers sendApptEmail', req.body.data);
-
 
   const comment = `${username} sent a ${jobType} request for ${day} ${date} at ${time} `
 

@@ -33,7 +33,6 @@ exports.createPage = (req, res) => {
       if(err) {
         return res.mongoError(err);
       }
-      console.log('page has been created');
       return res.json(createdPage);
     })
   }else{

@@ -32,7 +32,6 @@ exports.login = (req, res) =>{
 
     //hasSamePassword in model
     if(user.hasSamePassword(password)) {
-      console.log('user info controllers ',user);
       const token = await new jose.SignJWT({
         'userId': user.id,
         'username': user.username,
@@ -43,7 +42,6 @@ exports.login = (req, res) =>{
       .setAudience('public')
       .setExpirationTime('24h')
       .sign(secret);
-      console.log("token from controllers/users ",token)
       return res.json(token);
     }else{
       return res.sendApiError(
@@ -55,7 +53,6 @@ exports.login = (req, res) =>{
 }
 
 exports.register = (req, res) => {
-  // destructure object
   const { username, email, password, passwordConfirmation, notify } = req.body;
 
   if(!password || !email){
@@ -132,12 +129,10 @@ async function parseToken(token){
   try {
     const secret = new TextEncoder().encode(config.SECRET);
     const user = token.split(' ')[1];
-    console.log('user is ',user)
     const { payload, protectedHeader } = await jose.jwtVerify(user, secret, {
       issuer: 'http://localhost:3000',
       audience: 'public'
     });
-    console.log('parseToken ',payload)
     return { payload };
   }catch(err){
     console.log('there was an error ',err)

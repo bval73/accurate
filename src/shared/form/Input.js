@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 export const Input = (...props) => {
-  console.log('props are ', props);
   const {input,
     label,
     type,

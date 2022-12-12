@@ -18,7 +18,6 @@ class PageNew extends Component {
   }
 
   handleCreatePage = (pageData) => {
-    console.log('pageData is ', pageData);
      createPage(pageData)
       .then(_ => this.setState({shouldRedirect: true, pageName: pageData.pageName}))
       .catch(err => {

@@ -6,7 +6,6 @@ const initJobReducer = () => {
     //coming from actions 
     switch(action.type) {
       case 'FETCH_JOB':
-        console.log('fetch job')
         return action.jobs;
       case 'FETCH_JOB_BY_ID':
         return action.jobs;

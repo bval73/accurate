@@ -19,7 +19,6 @@ class Login extends Component {
   
 
   signIn = (loginData) => {
-    console.log("props ",this.props);
     this.props.auth.signIn(loginData)
     .then((token) => {
       this.setState({token, shouldRedirect: true});
