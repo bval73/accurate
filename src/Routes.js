@@ -19,7 +19,7 @@ import Contact from './pages/Contact';
 import CityPage from './pages/CityPage';
 // import GetPage from './pages/GetPage';
 import SecretPage from './pages/SecretPage';
-// import PageNew from './pages/PageNew';
+import PageNew from './pages/PageNew';
 import Thankyou from './pages/ThankYou';
 import Appointment from './pages/Appointment';
 import SurfaceWash from './pages/SurfaceWash';
@@ -51,14 +51,10 @@ const Routes = () => {
 
         <Route exact path="/contact" component={Contact} />
 
-        <AuthRoute path="/secret" >
-          <SecretPage />
-        </AuthRoute>
-
-        {/* <AuthRoute path="/page/create" >
+        {/*<AuthRoute path="/page/create" >
           <PageNew />
-        </AuthRoute>
-        <Route exact path="/page/:pageName" component={GetPage} /> */}
+        </AuthRoute> */}
+        {/* <Route exact path="/page/:pageName" component={GetPage} /> */}
 
         <Route path="*/pressure-washing*" component={CityPage} />
 

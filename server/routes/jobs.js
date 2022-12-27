@@ -8,7 +8,6 @@ const {
   getJobById,
   getJobByDt,
   getJobByDtTech,
-  createJOb,
   createJob,
   sendApptEmail
 } = require('../controllers/jobs');

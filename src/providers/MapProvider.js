@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-// import { tt, PolygonBuilder, color } from '@tomtom-international/web-sdk-maps';
 import tt from '@tomtom-international/web-sdk-maps';
 
 
@@ -31,12 +30,10 @@ export const MapProvider = ({children}) => {
     const map = tt.map({
       key: process.env.REACT_APP_TOMTOM_API_KEY,
       container: 'acc-map',
-//Below blows error Unhandled Rejection (TypeError): Failed to fetch      
-      // style: 'tomtom://vector/1/basic-main', 
+
       zoom:13,
       scrollZoom: false
     });
-//    map.addControl(new tt.NavigationControl());
     return map;
   }  
 

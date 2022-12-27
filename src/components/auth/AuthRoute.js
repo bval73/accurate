@@ -5,7 +5,9 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../../providers/AuthProvider';
 
-
+/*
+  when going to PageNew it always redirects to login if the exp date is good or not. Need to fix this.......
+*/
 const AuthRoute = ({children, ...rest}) => {
   const authService = useAuth();
   const onlyChild = React.Children.only(children)

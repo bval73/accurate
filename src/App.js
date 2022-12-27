@@ -1,6 +1,6 @@
 
 import React, {useEffect} from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 import './App.css';
 
@@ -39,16 +39,19 @@ const AccApp = () => {
   }, [authService])
 
   return(
-    <Router>
+    // <Router>
+    <div>
       <Header logout={authService.logout} />
-      <Routes />
+        <Routes />
       <Header logout={authService.logout} />
-    </Router>
+      </div>
+    // </Router>
   )
 }
 
 const App = () => {
   return (
+    <Router>
     <div className="App">
       <a className="skip-main" href="#content">Skip to main content</a>
       <header>
@@ -83,35 +86,37 @@ const App = () => {
         </div>
         <div className='top-banner row logo-row'>
             <div className='logo col-md-4 col-sm-6'>
-              <a className="" href="/home">
+              <Link className="" to="/home">
                 <img src='/images/NEWLOGOSMALL.svg' alt='logo'/>
-              </a>
+              </Link>
             </div>
 
             <div className='logo  areas col-md-4 col-sm-6 d-none d-lg-block d-md-block'>
               <div className='w-100'><b>Some of the area's we proudly clean in Florida:</b></div> 
 {/*TODO change anchors to Links with to={{path="some path here"}} */}
-              <a href="pressure-washing-dade-city" >Dade City</a>, 
-              <a href='pressure-washing-st-leo'>Saint Leo</a>,
-              <a href='pressure-washing-san-antonio'>San Antonio</a>,	
-              <a href='pressure-washing-wesley-chapel'>Wesley Chapel</a>, 
-              <a href='pressure-washing-trilby'>Trilby</a>,	
-              <a href='pressure-washing-zephyrhills'>Zephyrhills</a>, 
-              <a href='pressure-washing-lacoochee'>Lacoochee</a>, 
-              <a href='pressure-washing-crystal-springs'>Crystal Springs</a>,	
-              <a href='pressure-washing-kathleen'>Kathleen</a>,	
-              <a href='pressure-washing-land-o-lakes'>Land O Lakes</a>,	
-              <a href='pressure-washing-spring-hill'>Spring Hill</a>,	
-              <a href='pressure-washing-webster'>Webster</a>,	
-              <a href='pressure-washing-tampa'>Tampa</a>, 
-              <a href='pressure-washing-thonotosassa'>Thonotosassa</a>,	
-              <a href='pressure-washing-brooksville'>Brooksville</a>, 
-              <a href='pressure-washing-lutz'>Lutz</a>,	
-              <a href='pressure-washing-nobleton'>Nobleton</a>, 
-              <a href='pressure-washing-plant-city'>Plant City</a>,	
-              <a href='pressure-washing-bushnell'>Bushnell</a>, 
-              <a href='pressure-washing-seffner'>Seffner</a>, 
-              <a href='pressure-washing-odessa'>Odessa</a>
+              <Link className="nav-item" aria-current="page" to="/pressure-washing-dade-city">Dade City</Link>, 
+              {/* <a href='pressure-washing-dade-city'>Dade City</a>, */}
+              <Link className="nav-item" aria-current="page" to="/pressure-washing-st-leo">Saint Leo</Link>,
+              <Link className="nav-item" aria-current="page" to="/pressure-washing-san-antonio">Saint Antonio</Link>, 
+
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-wesley-chapel'>Wesley Chapel</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-trilby'>Trilby</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-zephyrhills'>Zephyrhills</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-lacoochee'>Lacoochee</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-crystal-springs'>Crystal Springs</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-kathleen'>Kathleen</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-land-o-lakes'>Land O Lakes</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-spring-hill'>Spring Hill</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-webster'>Webster</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-tampa'>Tampa</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-thonotosassa'>Thonotosassa</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-brooksville'>Brooksville</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-lutz'>Lutz</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-nobleton'>Nobleton</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-plant-city'>Plant City</Link>,	
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-bushnell'>Bushnell</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-seffner'>Seffner</Link>, 
+              <Link className="nav-item" aria-current="page" to='/pressure-washing-odessa'>Odessa</Link>
             </div>
 
             <div className='logo-right col-md-4 col-sm-6'>
@@ -127,9 +132,9 @@ const App = () => {
         <AccApp />
       </Providers>
     </div>
+    </Router>
   );
 }
 
 export default App;
-
 

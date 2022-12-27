@@ -10,7 +10,7 @@ class GetPage extends Component {
 
   componentDidMount() {
     const { pageName } = this.props.match.params; 
-    this.props.dispatch(fetchPageById(pageName)); //from actions..
+    this.props.dispatch(fetchPageById(pageName));
   }
 
   render() {

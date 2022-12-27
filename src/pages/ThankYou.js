@@ -4,7 +4,7 @@ import React from 'react';
 const Thankyou = () => {
   return (
     <div>
-      Your comment has been sent.  
+      Your comment has been sent.
     </div>
   );
 }

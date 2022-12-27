@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class AccBtn extends Component {
   isSecondaryText(secondaryText){
@@ -18,10 +19,10 @@ class AccBtn extends Component {
 
     return (
       <div className={className}>
-        <a href={href}>
+        <Link to={href}>
           {text}
           {this.isSecondaryText(secondaryText)}
-          </a>
+          </Link>
     </div>
     );
   }

@@ -1,22 +1,48 @@
+
 import React, { Component } from 'react';
 
-//import { MapWithAGeocode } from './TomMap';
-
+import tt from '@tomtom-international/web-sdk-maps';
 import { connect } from 'react-redux';
-import {reloadMapFinish} from 'actions';
-import * as poly from '../../polygon';
-import LoadMap from './LoadMap';
 
+import * as poly from '../../polygon';
 
 class CityMap extends Component{
 
-  reloadMapFinish() {
-    this.props.dispatch(reloadMapFinish());
+  constructor() {
+    super();
+
+    this.state = {
+      map:{},
+      local:'',
+      fileName:'',
+      reload:true,
+      file:{}
+    };
+    const local = '';
+    const fileName = ''; 
+    const file = {};
+  }
+
+  updateState() {
+    this.setState({
+      ...this.state,
+      file:this.file,
+      fileName:this.fileName,
+      local:this.local,
+      reload:true
+    }, () => {
+      this.insertMap();
+    });
+  }
+
+  componentDidMount() {
+    this.local = this.props.location;
+    this.fileName = this.local.replace(/\s/g, "").replace('fl', ""); 
+    this.file = this.getFile(this.fileName);
+    this.insertMap();
   }
 
   getFile(file) {
-    // const fileName = poly + `.${file}`
-    // return fileName;
     switch (file) {
       case 'DadeCity':
         return poly.DadeCity;
@@ -69,21 +95,66 @@ class CityMap extends Component{
     }
   }
 
-  render() {
-//    const { location, map: {isReloading} } = this.props;
-    const { location } = this.props;
-    const fileName = location.replace(/\s/g, "").replace('fl', "");
-    const file = this.getFile(fileName);
+  componentDidUpdate(){
+    this.local = this.props.location;
+    this.fileName = this.local.replace(/\s/g, "").replace('fl', ""); 
+    this.file = this.getFile(this.fileName);
+    if(this.fileName != this.state.fileName || this.state.local === ''){
+      this.updateState();
+    }
+  }
 
-    return(
-      <LoadMap data={file} />
-    )
+  insertMap() {
+    document.getElementById("map").innerHTML = "";
+    this.local = this.props.location;
+    this.file = this.getFile(this.fileName);
+    this.fileName = this.local.replace(/\s/g, "").replace('fl', "");
+    const {type, coords, center, zoom } = this.file;
+
+    let zom = zoom ? zoom : 11;
+    const map = tt.map({
+      key: process.env.REACT_APP_TOMTOM_API_KEY,
+      container: 'map',
+      zoom: zom,
+      center: center
+    });
+    map.addControl(new tt.FullscreenControl());
+    map.addControl(new tt.NavigationControl());
+    map.on('load', function() {
+      map.addLayer({
+          'id': 'overlay',
+          'type': 'fill',
+          'source': {
+              'type': 'geojson',
+              'data': {
+                  'type': 'Feature',
+                  'geometry': {
+                      'type': type,
+                      'coordinates': coords
+                  }
+              }
+          },
+          'layout': {},
+          'paint': {
+              'fill-color': '#abceba',
+              'fill-opacity': 0.5,
+              'fill-outline-color': 'black'
+          }
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div id='map' className='map'></div>
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    map:state.map
+    map:state.map,
+    file:state.file
   }
 }
 

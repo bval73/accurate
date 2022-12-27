@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import CityMap from 'components/map/CityMap';
 
 class CityPage extends Component {
-
+  constructor() {
+    super();
+    this.state = {
+      city:'' 
+    }
+  }
+  
   getCity() {
     let currentCity = window.location.href.split("/").pop().split("-");
     let city = '';
@@ -17,7 +23,6 @@ class CityPage extends Component {
         break;
       case 5: 
         city = currentCity[2].charAt(0).toUpperCase() + currentCity[2].slice(1) + ' ' + currentCity[3].charAt(0).toUpperCase() + currentCity[3].slice(1) + ' ' + currentCity[4].charAt(0).toUpperCase() + currentCity[4].slice(1);
-//        cityMap = currentCity[2]+'+'+currentCity[3]+'+'+currentCity[4]+'+fl';
         break;      
       default: return false;
     }
@@ -25,8 +30,7 @@ class CityPage extends Component {
   }
 
   render() {
-    let city = this.getCity();
-    
+    const city = this.getCity();
     return (
       <div className='row'>
         <h1>Top Rated Pressure Washing Service in {city} FL</h1>
