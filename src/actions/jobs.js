@@ -6,7 +6,6 @@ const { accAxios } = axiosService;
 // job
 export const fetchJob = () => async dispatch => {
   dispatch({type: 'IS_FETCHING_JOB'});
-  // console.log('actions fetch job')
   const res = await accAxios.get('/jobs');
     //send to reducer
   dispatch({
@@ -29,7 +28,6 @@ export const fetchJobById = id => async dispatch => {
 export const fetchJobByDt = date => async dispatch => {
   dispatch({type: 'IS_FETCHING_JOB'});
   const res = await accAxios.get(`/jobs/day/${date}`);
-    //send to reducer
   dispatch({
     type: 'FETCH_JOB_BY_DT',
     jobs: res.data
@@ -40,7 +38,6 @@ export const fetchJobByDt = date => async dispatch => {
 export const fetchJobByDtTech = (date, assignedTech) => async dispatch => {
   dispatch({type: 'IS_FETCHING_JOB'});
   const res = await accAxios.get(`/jobs/tech/${assignedTech}/${date}`);
-    //send to reducer
   dispatch({
     type: 'FETCH_JOB_BY_DT_TECH',
     jobs: res.data

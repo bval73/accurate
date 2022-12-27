@@ -12,8 +12,8 @@ const { createContext, useContext } = React;
 const AuthContext = createContext(null);
 
 // const secret = process.env.SECRET;
-const secret = new TextEncoder().encode('cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2');
-
+// const secret = new TextEncoder().encode('cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2');
+const secret = new TextEncoder().encode(process.env.REACT_APP_TOMTOM_API_KEY);
 //children and dispatch from props
 const AuthBaseProvider = ({children, dispatch}) => { 
 
@@ -27,6 +27,7 @@ const AuthBaseProvider = ({children, dispatch}) => {
 
   const isAuthenticated = () => {
     const decodedToken = decodeToken(getToken());
+    console.log('isAuthenticated ',isTokenValid(decodedToken));
     return decodedToken && isTokenValid(decodedToken)
   }
 
@@ -43,9 +44,9 @@ const AuthBaseProvider = ({children, dispatch}) => {
   } 
 
   const decodeToken = async token => {
-    if(token && token !== '[object Object]'){
+    // if(token && token !== '[object Object]'){
       try {
-        const { payload, protectedHeader } = await jose.jwtVerify(token, secret, {
+        const { payload } = await jose.jwtVerify(token, secret, {
           issuer: 'http://localhost:3000',
           audience: 'public'
         })
@@ -57,9 +58,9 @@ const AuthBaseProvider = ({children, dispatch}) => {
         sessionStorage.removeItem('acc-token');
         dispatch({type: 'LOG_OUT_USER'});
       }
-    }else{
-      return null;
-    }
+    // }else{
+    //   return null;
+    // }
   }
 
   const logout = () => {
