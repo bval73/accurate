@@ -2,7 +2,6 @@
 import { combineReducers } from 'redux';
 
 const initEmailSend = () => {
-//   debugger
   const item = (state = [], action) => {
     //coming from actions sendEmail
 

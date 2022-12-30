@@ -17,6 +17,7 @@ exports.login = (req, res) =>{
 
   User.findOne({email}, async (err, user) => {
     const secret = new TextEncoder().encode(config.SECRET);
+    // const secret = jose.util.base64url.encode(config.SECRET)
     const alg = 'HS256';
     if(err){
       return res.mongoError(err);
@@ -35,7 +36,7 @@ exports.login = (req, res) =>{
       const token = await new jose.SignJWT({
         'userId': user.id,
         'username': user.username,
-        'usertype': user.usertype 
+        'usertype': user.usertype
       })
       .setProtectedHeader({ alg })
       .setIssuer('http://localhost:3000')
@@ -127,15 +128,14 @@ exports.authMiddleWare = async function(req, res, next){
 
 async function parseToken(token){
   try {
-    const secret = new TextEncoder().encode(config.SECRET);
-    const user = token.split(' ')[1];
-    const { payload, protectedHeader } = await jose.jwtVerify(user, secret, {
-      issuer: 'http://localhost:3000',
-      audience: 'public'
-    });
+    let payload = {};
+    try {
+      payload = decodeJwt(token);
+    } catch (err) {
+      authService.logout();
+    }
     return { payload };
   }catch(err){
-    console.log('there was an error ',err)
     return {err: err.message};
   }
   

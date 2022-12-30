@@ -99,6 +99,13 @@ a.skip-main {
   border-radius: 2.4rem;
   height: auto;
   color: #a54f23;
+  &.btn-form{
+    &:hover{
+      background-color: green;
+      border: #abceba 5px solid;
+      color:white;
+    }
+  }
 }
 
 .banner-text{

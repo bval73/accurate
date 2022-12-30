@@ -22,7 +22,7 @@ class AccBtn extends Component {
         <Link to={href}>
           {text}
           {this.isSecondaryText(secondaryText)}
-          </Link>
+        </Link>
     </div>
     );
   }
