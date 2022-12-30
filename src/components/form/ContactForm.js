@@ -25,7 +25,6 @@ const ContactForm = ({onSubmit}) => {
   } = useForm();
 
   const location = () => {
-//    const { rental:{ street, city, state }} = this.props;
     const info = {
       street: 'lynan farms dr.',
       city: 'dade city',
@@ -181,7 +180,7 @@ const ContactForm = ({onSubmit}) => {
               className="form-control"
               id="phone"
               rows="6"
-              placeholder="Short description of work you would like us to do."
+              placeholder="Short description of work you would like us to perform."
             >
             </textarea>
             {errors.comment &&
@@ -193,9 +192,6 @@ const ContactForm = ({onSubmit}) => {
             }
           </div>
           <div className=''>
-            {/* <button className="btn acc-btn btn-form" type="submit" disabled={!valid || pristine || submitting} >
-              Submit
-            </button> */}
             <button 
               type="submit"
               className="btn acc-btn btn-form"
@@ -222,7 +218,7 @@ const ContactForm = ({onSubmit}) => {
           </div>
           <div className='col-md-6 col-sm-6'>
             <h5>Business Hours:</h5>
-            Mon - Sun<br/>
+            Mon - Sat<br/>
             7:00 am - 7:00 pm 
           </div>
         </div>

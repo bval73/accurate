@@ -17,12 +17,6 @@ export const sendEmail = (contactData) =>  dispatch => {
 
   dispatch({type: 'IS_SENDING_EMAIL'});
   return accAxios.post(`/contact/sendEmail`, contactData);
-
-  //send to reducer  
-  // dispatch({
-  //   type: 'SEND_EMAIL',
-  //   contact: res.data
-  // });
 }
 
 //Map
@@ -41,5 +35,6 @@ export const reloadMapFinish = () => {
 
 export * from './auth';
 export * from './pages';
-export * from './jobs'
+export * from './jobs';
+export * from './types';
 

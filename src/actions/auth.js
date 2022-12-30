@@ -35,7 +35,6 @@ export const createJob = job => {
 }
 
 export const userAuthenticated = (decodedToken) => {
-  console.log('auth userAuthenticated ',decodedToken);
   return {
     type: 'USER_AUTHENTICATED',
     username:decodedToken.username || '',

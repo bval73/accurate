@@ -1,5 +1,4 @@
 
-
 import React, { Component } from 'react';
 import LoginForm from 'components/form/LoginForm';
 import ApiErrors from 'components/form/ApiErrors';
@@ -12,7 +11,8 @@ class Login extends Component {
     super();
     this.state = {
       shouldRedirect: false,
-      errors: []
+      errors: [],
+      token:''
     }
   }
   
@@ -31,7 +31,6 @@ class Login extends Component {
   render() {
     document.title = 'Login to Accurate Powerwash to access your account and updates.';
     const { errors, shouldRedirect} = this.state;
-    //coming from the register page..
     const { message } = this.props.location.state || '';
     const { backPage } = this.props.location.state || '/';
 

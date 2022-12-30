@@ -92,13 +92,12 @@ const App = () => {
             </div>
 
             <div className='logo  areas col-md-4 col-sm-6 d-none d-lg-block d-md-block'>
-              <div className='w-100'><b>Some of the area's we proudly clean in Florida:</b></div> 
-{/*TODO change anchors to Links with to={{path="some path here"}} */}
+              <div className='w-100'>
+                <b>Some of the area's we proudly clean in Florida:</b>
+              </div> 
               <Link className="nav-item" aria-current="page" to="/pressure-washing-dade-city">Dade City</Link>, 
-              {/* <a href='pressure-washing-dade-city'>Dade City</a>, */}
               <Link className="nav-item" aria-current="page" to="/pressure-washing-st-leo">Saint Leo</Link>,
-              <Link className="nav-item" aria-current="page" to="/pressure-washing-san-antonio">Saint Antonio</Link>, 
-
+              <Link className="nav-item" aria-current="page" to="/pressure-washing-san-antonio">San Antonio</Link>, 
               <Link className="nav-item" aria-current="page" to='/pressure-washing-wesley-chapel'>Wesley Chapel</Link>, 
               <Link className="nav-item" aria-current="page" to='/pressure-washing-trilby'>Trilby</Link>,	
               <Link className="nav-item" aria-current="page" to='/pressure-washing-zephyrhills'>Zephyrhills</Link>, 

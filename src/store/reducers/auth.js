@@ -9,7 +9,6 @@ import { combineReducers } from 'redux';
 
 const initAuthReducer = () => {
   const isAuth = (state = false, action) => {
-  //  debugger
     switch(action.type) {
       case 'USER_AUTHENTICATED':
         return true
@@ -47,7 +46,7 @@ const initAuthReducer = () => {
     username,
     usertype
   })
-}// end initAuthReducer
+}
 const auth = initAuthReducer();
 
 export default auth;

@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import moment from 'moment';
-// import jwt from 'jsonwebtoken';
-import * as jose from 'jose';
+import {decodeJwt} from 'jose';
 import { Redirect } from 'react-router-dom';
 import { createJob, sendApptEmail } from '../actions';
+
+import { useAuth } from '../providers/AuthProvider';
 
 class Appointment extends Component {
 
@@ -33,12 +34,13 @@ class Appointment extends Component {
   } 
 
   decodeToken = async token => {
-    // const decoded = jwt.decode(token);
-    const secret = new TextEncoder().encode('cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2');
-    const { payload, protectedHeader } = await jose.jwtVerify(token, secret, {
-      issuer: 'http://localhost:3000',
-      audience: 'public'
-    });
+    const authService = useAuth();
+    let payload = {};
+    try {
+      payload = decodeJwt(token);
+    } catch (err) {
+      authService.logout();
+    }
     
     return payload.userId;
   }
@@ -69,7 +71,7 @@ class Appointment extends Component {
           this.props.dispatch(sendApptEmail(createdJob));
       })
       .catch(err => {
-       console.log('create job err', err);
+        console.log('create job err', err);
         this.setState({error: err})
       })
   }

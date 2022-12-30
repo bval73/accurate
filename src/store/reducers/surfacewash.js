@@ -8,7 +8,6 @@ import { combineReducers } from 'redux';
 const initSurfaceWashReducer = () => {
   const item = (state = [], action) => {
     //coming from actions fetchSurfaceWash
-//debugger
     switch(action.type) {
       case 'SURFACE_WASH':
         return action.pages;

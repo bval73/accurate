@@ -44,7 +44,7 @@ app.get('/api/v1/secret', authMiddleWare, (req, res) =>  {
   return res.json({message: `Secret message don't share ${user.username}`})
 });
 
-//user
+//users
 app.use('/api/v1/users', userRoutes);
 
 //pages
