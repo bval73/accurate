@@ -1,5 +1,5 @@
 
-import * as jose from 'jose';
+import { decodeJwt } from 'jose';
 import * as moment from 'moment';
 
 class AuthService{
@@ -12,7 +12,7 @@ class AuthService{
   }
 
   decode(token) {
-    return jose.decode(token);
+    return decodeJwt(token);
   }
 
   saveToken(token) {

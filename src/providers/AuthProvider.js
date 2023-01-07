@@ -22,7 +22,7 @@ const AuthBaseProvider = ({children, dispatch}) => {
 
   const isAuthenticated = () => {
     const decodedToken = decodeToken(getToken());
-    return decodedToken && isTokenValid(decodedToken)
+    return decodedToken && isTokenValid(decodedToken);
   }
 
   const isTokenValid = (decodedToken) => {
@@ -96,4 +96,3 @@ export const withAuth = Component => props => (
     {(authApi) => <Component {...props} auth={authApi} />}
   </AuthContext.Consumer>
 )
-

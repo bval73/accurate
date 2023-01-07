@@ -42,7 +42,6 @@ exports.getJobByDtTech = (req, res) => {
 
   Job.find({date, assignedTech}, (err, foundJobs) => {
     if(err) {
-//      console.log('Mongo error ', err);
       return res.mongoError(err);
     }
     return res.json(foundJobs);
@@ -73,11 +72,10 @@ exports.assignTech = (req, res) => {
 }//.sort({ date: 'asc'});
 
 exports.sendApptEmail = (req, res) => {
-  const { time, date, day, jobType, owner:{username, email}} = req.body.data;
+  const data = req.body.data;
+  data.comment = `${data.owner.username} sent a ${data.jobType} request for ${data.day} ${data.date} at ${data.time} `;
 
-  const comment = `${username} sent a ${jobType} request for ${day} ${date} at ${time} `
-
-  sendEmail(email, username, null, "team", null, comment);
+  sendEmail(req.body.data, "team");
 
   return res.status(200).json({
     success: true,

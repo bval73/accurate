@@ -5,14 +5,15 @@ const config = require('../config');
 const { sendEmail } = require('../utils/mail/index');
 
 exports.sendEmail = (req, res) => {
+  const contactData = req.body;
   const { fname, lname, email, comment } = req.body;
     let name = '';
   name = fname + ' ' + lname;
-  sendEmail(email, name, null, "thankyou");
+  sendEmail(contactData, "thankyou");
   // need to put in a timeout sends it to fast may cause an issue with spamming
   setTimeout(() => {
     name = fname + ' ' + lname;
-    sendEmail(email, name, null, "team", null, comment);
+    sendEmail(contactData, "team");
   }, 2000);
   
 

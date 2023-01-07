@@ -4,8 +4,27 @@ const config = require('../../config'),
       { team } = require('./team_template');
 
     
-const getEmailData = (to, name, token, template, actionData, comment) => {
+const getEmailData = (formData, template) => {
   let data = null;
+  const {
+    lname,
+    fname,
+    street,
+    city,
+    zip,
+    phone,
+    email,
+    comment,
+    time,
+    startTime,
+    date,
+    day,
+    jobType,
+    username
+  } = formData;
+
+  const to = email ? email : formData.owner.email;
+  const name = lname ? `${fname} ${lname}` : `${formData.owner.username}`;
 
   switch(template) {
     case 'thankyou':
@@ -21,7 +40,7 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
         from: config.GMAIL_USR,
         to,
         subject: `Message from ${name}`,
-        html:team(name, comment, to)
+        html:team(formData)
       } 
     break;
 
@@ -31,7 +50,7 @@ const getEmailData = (to, name, token, template, actionData, comment) => {
   return data;
 }
 
-const sendEmail = (to, name, token, type, actionData, comment) => {
+const sendEmail = (formData, type) => {
   const smptTransport = mailer.createTransport({
     service: "gmail",
     auth: {
@@ -40,18 +59,16 @@ const sendEmail = (to, name, token, type, actionData, comment) => {
     }
   });
 
-  const mail = getEmailData(to, name, token, type, actionData, comment);
+  const mail = getEmailData(formData, type);
 
   smptTransport.sendMail(mail, function(err, res) {
     if(err) {
-      console.log(err);
       smptTransport.close();
       return err;
     } else {
       smptTransport.close();
       return res;
     }
-//    smptTransport.close();
   });
 }
 

@@ -85,6 +85,24 @@ const Header = ({username, usertype, isAuth, logout}) => {
               </li>            
             </React.Fragment>
             } */}
+            {usertype === 'admin' && isAuth &&
+            <React.Fragment>
+              <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/job/admin">
+                Jobs
+              </Link>
+              </li>            
+            </React.Fragment>
+            }
+            {usertype === 'tech' && isAuth &&
+            <React.Fragment>
+              <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/job/tech">
+                Jobs
+              </Link>
+              </li>            
+            </React.Fragment>
+            }
             <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/appointment">
                   Appointment                  
