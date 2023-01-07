@@ -130,9 +130,9 @@ async function parseToken(token){
   try {
     let payload = {};
     try {
-      payload = decodeJwt(token);
+      payload = jose.decodeJwt(token);
     } catch (err) {
-      authService.logout();
+      sessionStorage.removeItem('acc-token');
     }
     return { payload };
   }catch(err){

@@ -18,14 +18,16 @@ import Intro from './blog/Difference';
 import Contact from './pages/Contact';
 import CityPage from './pages/CityPage';
 // import GetPage from './pages/GetPage';
-import SecretPage from './pages/SecretPage';
-import PageNew from './pages/PageNew';
+// import SecretPage from './pages/SecretPage';
+// import PageNew from './pages/PageNew';
 import Thankyou from './pages/ThankYou';
 import Appointment from './pages/Appointment';
 import SurfaceWash from './pages/SurfaceWash';
 import RoofWash from './pages/RoofWash';
 import HouseWash from './pages/HouseWash';
 import SoftWash from './pages/SoftWash';
+import JobsAdmin from 'pages/JobsAdmin';
+import JobsTech from 'pages/JobsTech';
 
 
 const Routes = () => {
@@ -55,6 +57,16 @@ const Routes = () => {
           <PageNew />
         </AuthRoute> */}
         {/* <Route exact path="/page/:pageName" component={GetPage} /> */}
+
+        {/* <AuthRoute path="/job/tech" >
+          <JobsTech />
+        </AuthRoute> */}
+        <Route exact path="/job/tech" component={JobsTech} />
+
+        <AuthRoute path="/job/admin" >
+          <JobsAdmin />
+        </AuthRoute>
+        {/* <Route exact path="/job/admin" component={JobsAdmin} /> */}
 
         <Route path="*/pressure-washing*" component={CityPage} />
 

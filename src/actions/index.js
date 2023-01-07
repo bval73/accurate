@@ -14,7 +14,6 @@ export const extractApiErrors = (resError) => {
 
 //Contact page
 export const sendEmail = (contactData) =>  dispatch => {
-
   dispatch({type: 'IS_SENDING_EMAIL'});
   return accAxios.post(`/contact/sendEmail`, contactData);
 }

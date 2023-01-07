@@ -51,13 +51,3 @@ export const sendApptEmail = (createdJob) => dispatch => {
 
 }
 
-// export const createJob = job => {
-//   const token = sessionStorage.getItem('bwm-token');
-// //avoid 401 page error  
-//   const config = {
-//     headers: {
-//       Authorization: `Bearer ${token}`
-//     }
-//   }
-//   return accAxios.post('/jobs', job, config);
-// }

@@ -7,8 +7,6 @@ import {decodeJwt} from 'jose';
 import { Redirect } from 'react-router-dom';
 import { createJob, sendApptEmail } from '../actions';
 
-import { useAuth } from '../providers/AuthProvider';
-
 class Appointment extends Component {
 
   constructor() {
@@ -24,8 +22,7 @@ class Appointment extends Component {
       },
       shouldRedirect: false,
       error: null,
-      message: null,
-      secret: process.env.SECRET
+      message: null
     }
   }
 
@@ -34,18 +31,15 @@ class Appointment extends Component {
   } 
 
   decodeToken = async token => {
-    const authService = useAuth();
-    let payload = {};
+    const payload = decodeJwt(token);
     try {
-      payload = decodeJwt(token);
+      return payload.userId;
     } catch (err) {
-      authService.logout();
+      sessionStorage.removeItem('acc-token')
     }
-    
-    return payload.userId;
   }
 
-  handleApply = (event, {startDate}) => {
+  handleApply = async(event, {startDate}) => {
     if(this.getToken()) {
       const id = this.decodeToken(this.getToken());
       this.setState({
@@ -64,15 +58,20 @@ class Appointment extends Component {
     }
     
     createJob(this.state.proposedAppointment)
-      .then((createdJob) => {
-        this.setState({
-          message: 'Your FREE QUOTE request has been sent, we will contact you either to confirm or let you know if there is a schedule conflict.'});
+      .then(async(createdJob) => {
+        const results = await this.props.dispatch(sendApptEmail(createdJob));
 
-          this.props.dispatch(sendApptEmail(createdJob));
+        if(results.data.success){
+          this.setState({
+            ...this.state.message,
+            message: 'Your FREE QUOTE request has been sent to our team. If there is a sceduling conflict our team will reach out you.'});
+        }
+
+          // this.props.dispatch(sendApptEmail(createdJob));
       })
       .catch(err => {
-        console.log('create job err', err);
-        this.setState({error: err})
+        this.setState({error: err});
+        console.log('Appointment createJob error');
       })
   }
 
