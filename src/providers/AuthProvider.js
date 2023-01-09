@@ -11,9 +11,9 @@ const { createContext, useContext } = React;
 const AuthContext = createContext(null);
 
 //children and dispatch from props
-const AuthBaseProvider = ({children, dispatch}) => { 
+const AuthBaseProvider = ({children, dispatch}) => {
 
-  const  checkAuthState = async () => {
+  const  checkAuthState = async() => {
     const decodedToken = await decodeToken(getToken());
     if(decodedToken && moment().isBefore(getExpiration(decodedToken))) {
       dispatch(userAuthenticated(decodedToken));
@@ -25,7 +25,7 @@ const AuthBaseProvider = ({children, dispatch}) => {
     return decodedToken && isTokenValid(decodedToken);
   }
 
-  const isTokenValid = (decodedToken) => {
+  const isTokenValid = async (decodedToken) => {
     return decodeToken && moment().isBefore(getExpiration(decodedToken));
   }
 
@@ -37,19 +37,17 @@ const AuthBaseProvider = ({children, dispatch}) => {
     return sessionStorage.getItem('acc-token');
   } 
 
-  const decodeToken = async (token) => {
+  const decodeToken = (token) => {
     if(token && token !== '[object Object]'){
       try {
         const payload = decodeJwt(token);
-        
         return payload;
-
       } catch (err) {
         sessionStorage.removeItem('acc-token');
         dispatch({type: 'LOG_OUT_USER'});
       }
     }else{
-      return null;
+      return false;
     }
   }
 

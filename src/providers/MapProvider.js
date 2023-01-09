@@ -86,16 +86,6 @@ export const MapProvider = ({children}) => {
       .catch(() => locationNotFound())
   }
 
-//   const makePolygon = (city) =>{
-// //    const coordinates = polygon;
-//     PolygonBuilder.create()
-// //    .coordinates(coordinates)
-//     .coordinates(polygon)    
-//     .color(color)
-//     .build()
-
-//     //tomtomMap.overlaySettings.addOverlay(polygon)
-//   }
 
   const mapApi = {
     initMap,

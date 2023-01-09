@@ -43,6 +43,8 @@ const Routes = () => {
         <Route exact path="/houseWash" component={HouseWash} />
         <Route exact path="/softWash" component={SoftWash} />
 
+        {/* <Route exact path="/login" component={Login} /> */}
+
         <GuestRoute path="/login" >
           <Login />
         </GuestRoute>
@@ -58,10 +60,10 @@ const Routes = () => {
         </AuthRoute> */}
         {/* <Route exact path="/page/:pageName" component={GetPage} /> */}
 
-        {/* <AuthRoute path="/job/tech" >
+        <AuthRoute path="/job/tech" >
           <JobsTech />
-        </AuthRoute> */}
-        <Route exact path="/job/tech" component={JobsTech} />
+        </AuthRoute>
+        {/* <Route exact path="/job/tech" component={JobsTech} /> */}
 
         <AuthRoute path="/job/admin" >
           <JobsAdmin />
@@ -80,3 +82,4 @@ const Routes = () => {
 }
 
 export default Routes;
+
