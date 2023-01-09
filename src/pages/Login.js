@@ -11,13 +11,10 @@ class Login extends Component {
     super();
     this.state = {
       shouldRedirect: false,
-      errors: [],
-      token:''
+      errors: []
     }
   }
   
-  
-
   signIn = (loginData) => {
     this.props.auth.signIn(loginData)
     .then((token) => {

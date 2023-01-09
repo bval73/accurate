@@ -4,11 +4,11 @@ import * as moment from 'moment';
 
 class AuthService{
 
-  tokenKey = 'auth-token';
+  tokenKey = 'acc-token';
 
   getToken() {
     
-    return localStorage.getItem(this.tokenKey);
+    return sessionStorage.getItem(this.tokenKey);
   }
 
   decode(token) {
@@ -16,11 +16,11 @@ class AuthService{
   }
 
   saveToken(token) {
-    localStorage.setItem(this.tokenKey, token)
+    sessionStorage.setItem(this.tokenKey, token)
   }
 
   invalidateUser() {
-    localStorage.removeItem(this.tokenKey);
+    sessionStorage.removeItem(this.tokenKey);
   }
 
   getExpiration(token) {

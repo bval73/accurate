@@ -66,8 +66,6 @@ class Appointment extends Component {
             ...this.state.message,
             message: 'Your FREE QUOTE request has been sent to our team. If there is a sceduling conflict our team will reach out you.'});
         }
-
-          // this.props.dispatch(sendApptEmail(createdJob));
       })
       .catch(err => {
         this.setState({error: err});
