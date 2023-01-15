@@ -3,7 +3,6 @@ import React from 'react';
 
 const JobsAdmin = () => {
   
-  
   return (
     <div>
       Admin Jobs Page.
