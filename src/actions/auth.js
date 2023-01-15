@@ -31,7 +31,7 @@ export const createJob = job => {
       Authorization: `Bearer ${token}`
     }
   }
-  return accAxios.post('/jobs', job, config);
+  return accAxios.post('/job', job, config);
 }
 
 export const userAuthenticated = (decodedToken) => {

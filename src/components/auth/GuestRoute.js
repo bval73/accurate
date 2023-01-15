@@ -9,7 +9,9 @@ const GuestRoute = ({children, ...rest}) => {
   const onlyChild = React.Children.only(children);
 
   return (
-    <Route {...rest} render={(props) => !authService.isAuthenticated() ? React.cloneElement(onlyChild, {...rest, ...props}) : <Redirect to={{pathname: '/'}} />  } 
+    <Route {...rest} render={(props) => !authService.isAuthenticated() 
+      ? React.cloneElement(onlyChild, {...rest, ...props}) 
+      : <Redirect to={{pathname: '/'}} />  } 
     />
   )
 }

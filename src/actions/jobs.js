@@ -47,7 +47,6 @@ export const fetchJobByDtTech = (date, assignedTech) => async dispatch => {
 //send email notification for appointment
 export const sendApptEmail = (createdJob) => dispatch => {
   dispatch({type: 'IS_SENDING_EMAIL'});
-  return accAxios.post(`/jobs/appointment/sendEmail`, createdJob);
-
+  return accAxios.post(`/job/appointment/sendEmail`, createdJob);
 }
 

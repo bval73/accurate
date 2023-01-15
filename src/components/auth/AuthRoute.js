@@ -8,9 +8,10 @@ import { useAuth } from '../../providers/AuthProvider';
 const AuthRoute = ({children, ...rest}) => {
   const authService = useAuth();
   const onlyChild = React.Children.only(children);
-
   return (
-    <Route {...rest} render={(props) => authService.isAuthenticated() ? React.cloneElement(onlyChild, {...rest, ...props}) : <Redirect to={{pathname: '/login'}} />  } 
+    <Route {...rest} render={(props) => authService.isAuthenticated() 
+      ? React.cloneElement(onlyChild, {...rest, ...props},onlyChild) 
+      : <Redirect to={{pathname: '/login'}} />  } 
     />
   )
 }

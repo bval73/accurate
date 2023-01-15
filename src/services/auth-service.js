@@ -38,6 +38,7 @@ class AuthService{
   }
 
   isValid(token){
+    console.log('isValid ',moment().isBefore(this.getExpiration(token)))
     return moment().isBefore(this.getExpiration(token));
   }
 

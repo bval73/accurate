@@ -9,11 +9,15 @@ const {
   getJobByDt,
   getJobByDtTech,
   createJob,
-  sendApptEmail
+  sendApptEmail,
+  getTechJobs,
+  getAdminJobs
 } = require('../controllers/jobs');
 
 
 router.get('', getJobs);
+router.get('/job/admin',authMiddleWare, getAdminJobs);
+router.get('/job/tech',authMiddleWare, getTechJobs);
 router.get('/:id', getJobById);
 router.get('/day/:date', getJobByDt);
 router.get('/tech/:assignedTech/:date', getJobByDtTech);

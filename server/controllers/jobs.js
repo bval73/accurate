@@ -1,11 +1,31 @@
 
-//TODO: NEED UPDATE FOR WHEN JOB IS COMPLETED AND FOR TECH TO BE ASSIGNED
+//TODO: NEED UPDATE FOR WHEN JOB HAS TO BE ASSIGNED, IS COMPLETED, AND FOR TECH TO BE ASSIGNED
 
 const Job = require('../models/job');
+const moment = require('moment');
 
 //UTILS
 const { sendEmail } = require('../utils/mail/index');
 
+exports.getTechJobs = async (req, res) => {
+  console.log('getTechJobs');
+}
+
+exports.getAdminJobs = async (req,res) => {
+  console.log('getAdminJobs');
+  const { job } = req.query;
+  const query = job ? Job.find({job}) : Job.find({});
+  try {
+    // const jobs = await query.select('startAt endAt -_id').exec();
+    const jobs = await query.select().exec();
+    console.log('jobs are ',jobs);
+    return res.json(jobs);
+  } catch (error) {
+    return res.mongoError(error);
+  }
+}
+
+//TODO: May not need this one....
 exports.getJobs = (req, res) => {
   Job.find({}, (err, foundJobs) => {
     if(err) {
@@ -38,7 +58,7 @@ exports.getJobByDt = (req, res) => {
 };
 
 exports.getJobByDtTech = (req, res) => {
-  const { date, assignedTech } = req.params;
+  let { date, assignedTech } = req.params;
 
   Job.find({date, assignedTech}, (err, foundJobs) => {
     if(err) {

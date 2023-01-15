@@ -101,6 +101,7 @@ exports.register = (req, res) => {
 
 exports.authMiddleWare = async function(req, res, next){
   const token = req.headers.authorization;
+  console.log('authMiddleWare ',token);
   if(token){
       const {payload, err} = await parseToken(token);
       if(err){
@@ -133,6 +134,7 @@ async function parseToken(token){
       payload = jose.decodeJwt(token);
     } catch (err) {
       sessionStorage.removeItem('acc-token');
+      notAuthorized(err);
     }
     return { payload };
   }catch(err){
