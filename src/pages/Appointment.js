@@ -53,7 +53,6 @@ class Appointment extends Component {
         }
       })
     } else {
-      console.log('redirecting from appointment')
       this.setState({shouldRedirect: true});
       return null;
     }
@@ -84,7 +83,6 @@ class Appointment extends Component {
     const isAuth = this.props.isAuth;
 
     if(shouldRedirect) {
-      console.log('shouldRedirect ',shouldRedirect, isAuth);
       return <Redirect to={{pathname: '/login', state:{message: 'You need to be logged in to set an appointment.', backPage: 'appointment'}}} /> 
     }
 

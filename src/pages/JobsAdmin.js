@@ -7,9 +7,7 @@ import {fetchJob} from '../actions';
 
 const JobsAdmin = (props) => {
   const { data, isFetching   } = props;
-  const [reLoad, setReload] = useState(0);
 
-console.log('data is ',data);
   useEffect(() => {
     props.dispatch(fetchJob());
   }, []);
@@ -27,8 +25,6 @@ console.log('data is ',data);
       </div>
     );
   
-  // const { data, isFetching   } = props;
-console.log('isFetching ',isFetching,data)
   if(isFetching){return null;}
 
   return (
@@ -58,9 +54,4 @@ const mapStateToProps = ({job}) => {
   }
 }
 
-// const JobDetailWithRouter = withRouter(JobsAdmin);
-
 export default connect(mapStateToProps)(JobsAdmin);
-
-// export default connect(mapStateToProps)(JobDetailWithRouter);
-
