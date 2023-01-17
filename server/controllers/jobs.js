@@ -11,6 +11,7 @@ exports.getTechJobs = async (req, res) => {
   console.log('getTechJobs');
 }
 
+//TODO: may not need this one..
 exports.getAdminJobs = async (req,res) => {
   console.log('getAdminJobs');
   const { job } = req.query;
@@ -25,12 +26,12 @@ exports.getAdminJobs = async (req,res) => {
   }
 }
 
-//TODO: May not need this one....
 exports.getJobs = (req, res) => {
   Job.find({}, (err, foundJobs) => {
     if(err) {
       return res.mongoError(err);
     }
+    console.log('getJobs ',foundJobs);
     return res.json(foundJobs);
   });
 };

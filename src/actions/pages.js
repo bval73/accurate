@@ -24,3 +24,4 @@ export const createPage = page => {
     return accAxios.post('/pages', page);
   }
   
+  

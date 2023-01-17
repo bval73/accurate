@@ -8,10 +8,23 @@ const jobSchema = new Schema({
   endTime:{type:Date},
   date: {type: String},
   day:{type: String},
-  jobType: {type: String},
+  jobType: {
+    type: String
+  },
   // owner: {type: Schema.Types.ObjectId, ref: 'User', required: true},
   owner: {type: Schema.Types.ObjectId, ref: 'User'},
-  assignedTech: {type: String}
+  assignedTech: {
+    type: String,
+    default:"Bill"
+  },
+  city: {
+    type: String,
+    default:''
+  },
+  streetAddress: {
+    type: String,
+    default:''
+  },
 });
 
 module.exports = mongoose.model('Job', jobSchema);
