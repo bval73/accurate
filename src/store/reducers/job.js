@@ -27,6 +27,7 @@ const initJobReducer = () => {
   const isFetching = (state = false, action) =>{
     switch(action.type) {
       case 'IS_FETCHING_JOB':
+      // case 'IS_FETCHING_JOBS':  
         return true;
       case 'FETCH_JOB_BY_ID':
         return false

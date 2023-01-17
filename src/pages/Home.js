@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-//import RenderPage from 'components/RenderPage';
 import { fetchPageById } from 'actions';
 
 import Carousel from 'shared/Carousel';
 
 
 class Home extends Component {
-
   state = {
     pages: []
   }
@@ -25,8 +23,6 @@ class Home extends Component {
           <div className='imageHover'>{page.sectionTitle}</div>
           <img src={`${page.image}`} className="img-fluid" alt=""/>
         </a>
-        {/* <span>{page.pageTitle}</span> */}
-        
       </div>
     );
 
@@ -41,7 +37,6 @@ class Home extends Component {
       <div>
         <section>
           <h1 className="page-title">We treat your home as if it were ours.</h1>
-          {/* <h1>{data.length > 1 && data[0].pageTitle}</h1> */}
           <Carousel />
         </section>
         <section>
@@ -64,4 +59,3 @@ const mapStateToProps = ({page}) => {
 }
 
 export default connect(mapStateToProps)(Home);
-

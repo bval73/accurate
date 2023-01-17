@@ -39,13 +39,11 @@ const AccApp = () => {
   }, [authService])
 
   return(
-    // <Router>
     <div>
       <Header logout={authService.logout} />
         <Routes />
       <Header logout={authService.logout} />
-      </div>
-    // </Router>
+    </div>
   )
 }
 
