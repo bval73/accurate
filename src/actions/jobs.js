@@ -5,11 +5,9 @@ const { accAxios } = axiosService;
 
 // job
 export const fetchJob = () => async dispatch => {
-  console.log('fetchJob')
   dispatch({type: 'IS_FETCHING_JOB'});
   const res = await accAxios.get('/job');
     //send to reducer
-    console.log('fetchJob res',res);
   dispatch({
     type: 'FETCH_JOB',
     jobs: res.data
