@@ -11,9 +11,8 @@ exports.getTechJobs = async (req, res) => {
   console.log('getTechJobs');
 }
 
-//TODO: may not need this one..
+
 exports.getAdminJobs = async (req,res) => {
-  console.log('getAdminJobs ');
   // const { job } = req.query;
   // const query = job ? Job.find({job}) : Job.find({});
   // try {
