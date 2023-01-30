@@ -13,6 +13,17 @@ export const fetchJob = () => async dispatch => {
     jobs: res.data
   });
 }
+
+export const fetchAdminJob = () => async dispatch => {
+  dispatch({type: 'IS_FETCHING_JOB'});
+  const res = await accAxios.get('/job/admin');
+    //send to reducer
+  dispatch({
+    type: 'FETCH_ADMIN_JOB',
+    jobs: res.data
+  });
+};
+
 // job by id 
 export const fetchJobById = id => async dispatch => {
   dispatch({type: 'IS_FETCHING_JOB'});

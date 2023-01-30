@@ -1,5 +1,8 @@
 
 import axiosService from '../services/AxiosService';
+import { LOG_OUT_USER } from './types';
+import authService from 'services/auth-service';
+
 const { accAxios } = axiosService;
 
 export const extractApiErrors = (resError) => {
@@ -31,6 +34,12 @@ export const reloadMapFinish = () => {
   }
 }
 
+export const logout = () => {
+  authService.invalidateUser();
+  return{
+    type: LOG_OUT_USER
+  } 
+}
 
 export * from './auth';
 export * from './pages';

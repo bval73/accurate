@@ -14,15 +14,16 @@ const {
   getAdminJobs
 } = require('../controllers/jobs');
 
-// router.get('', getJobs);
+// router.get('', authMiddleWare, getJobs);
 router.get('/job/admin',authMiddleWare, getAdminJobs);
 router.get('/job/tech',authMiddleWare, getTechJobs);
 router.get('/:id', getJobById);
 router.get('/day/:date', getJobByDt);
 router.get('/tech/:assignedTech/:date', getJobByDtTech);
-router.get('', getJobs)
 
 router.post('/appointment/sendEmail', sendApptEmail);
+
+router.get('', authMiddleWare, getJobs);
 
 router.post('', authMiddleWare, createJob);
 

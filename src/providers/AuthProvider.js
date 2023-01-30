@@ -52,8 +52,10 @@ const AuthBaseProvider = ({children, dispatch}) => {
   }
 
   const logout = () => {
+    console.log('logout ');
     sessionStorage.removeItem('acc-token');
     dispatch({type: 'LOG_OUT_USER'});
+
   }
 
   const signIn = (loginData) => {

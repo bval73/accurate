@@ -16,13 +16,14 @@ exports.errorHandler = (req, res, next) => {
     if(dbError && dbError.hasOwnProperty(errorField) && 
       dbError.name === 'ValidationError' ) {
         const errors = dbError[errorField];
-        
+
         for (let property in errors) {
           normalizedErrors.push({title: property, detail: errors[property].message});
         }
       }else{
         normalizedErrors.push({title:'DB Error', detail:'Ooops, something went wrong, Try again!!'});
       }
+      console.log('res.mongoError',dbError)
       return res.status(422).send({errors: normalizedErrors});
 //          return normalizeErrors;
   }
