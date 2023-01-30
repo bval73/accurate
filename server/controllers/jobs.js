@@ -12,21 +12,29 @@ exports.getTechJobs = async (req, res) => {
 }
 
 //TODO: may not need this one..
-// exports.getAdminJobs = async (req,res) => {
-//   console.log('getAdminJobs');
-//   const { job } = req.query;
-//   const query = job ? Job.find({job}) : Job.find({});
-//   try {
-//     // const jobs = await query.select('startAt endAt -_id').exec();
-//     const jobs = await query.select().exec();
-//     console.log('jobs are ',jobs);
-//     return res.json(jobs);
-//   } catch (error) {
-//     return res.mongoError(error);
-//   }
-// }
+exports.getAdminJobs = async (req,res) => {
+  console.log('getAdminJobs ');
+  // const { job } = req.query;
+  // const query = job ? Job.find({job}) : Job.find({});
+  // try {
+  //   // const jobs = await query.select('startAt endAt -_id').exec();
+  //   const jobs = await query.select().exec();
+  //   console.log('jobs are ',jobs);
+  //   return res.json(jobs);
+  // } catch (error) {
+  //   return res.mongoError(error);
+  // }
+
+  Job.find({}, (err, foundJobs) => {
+    if(err) {
+      return res.mongoError(err);
+    }
+    return res.json(foundJobs);
+  });
+}
 
 exports.getJobs = (req, res) => {
+  console.log('getJobs')
   Job.find({}, (err, foundJobs) => {
     if(err) {
       return res.mongoError(err);

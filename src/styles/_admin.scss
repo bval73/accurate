@@ -1,0 +1,19 @@
+.admin-row {
+  padding: 5px;
+  border-top: 2px solid $blue-green;
+  // border-left: 2px solid $blue-green;
+  // border-right: 2px solid $blue-green;
+}
+
+.admin-table-header {
+  background-color: $blue-green;
+  margin-top: 20px;
+  color:white;
+}
+
+.admin-table {
+  border: 2px solid $blue-green;
+  margin-bottom: 10px;
+  padding: 0 12px;
+  border-top: none;
+}
