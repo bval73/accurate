@@ -4,7 +4,7 @@ const router = express.Router();
 const { authMiddleWare } = require('../controllers/users');
 
 const {
-  getJobs,
+  // getJobs,
   getJobById,
   getJobByDt,
   getJobByDtTech,
@@ -15,15 +15,13 @@ const {
 } = require('../controllers/jobs');
 
 // router.get('', authMiddleWare, getJobs);
-router.get('/job/admin',authMiddleWare, getAdminJobs);
+router.get('/admin',authMiddleWare, getAdminJobs);
 router.get('/job/tech',authMiddleWare, getTechJobs);
 router.get('/:id', getJobById);
 router.get('/day/:date', getJobByDt);
 router.get('/tech/:assignedTech/:date', getJobByDtTech);
 
 router.post('/appointment/sendEmail', sendApptEmail);
-
-router.get('', authMiddleWare, getJobs);
 
 router.post('', authMiddleWare, createJob);
 

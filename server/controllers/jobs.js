@@ -12,7 +12,8 @@ exports.getTechJobs = async (req, res) => {
 }
 
 
-exports.getAdminJobs = async (req,res) => {
+exports.getAdminJobs = (req,res) => {
+  // console.log('getAdminJobs ')
   // const { job } = req.query;
   // const query = job ? Job.find({job}) : Job.find({});
   // try {
@@ -26,21 +27,23 @@ exports.getAdminJobs = async (req,res) => {
 
   Job.find({}, (err, foundJobs) => {
     if(err) {
+      console.log('the mongoose error is ',err)
       return res.mongoError(err);
     }
+    console.log('getAdminJobs ',foundJobs)
     return res.json(foundJobs);
   });
 }
 
-exports.getJobs = (req, res) => {
-  console.log('getJobs')
-  Job.find({}, (err, foundJobs) => {
-    if(err) {
-      return res.mongoError(err);
-    }
-    return res.json(foundJobs);
-  });
-};
+// exports.getJobs = (req, res) => {
+//   console.log('getJobs',req)
+//   Job.find({}, (err, foundJobs) => {
+//     if(err) {
+//       return res.mongoError(err);
+//     }
+//     return res.json(foundJobs);
+//   });
+// };
 
 exports.getJobById = (req, res) => {
   const { id } = req.params;

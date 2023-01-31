@@ -50,6 +50,7 @@ const JobsAdmin = (props) => {
   }
 
   const renderJobs = (data) => {
+    console.log('renderJobs ',data);
     if(data) {
       return(
         data.map((job,index) =>
@@ -89,7 +90,7 @@ const JobsAdmin = (props) => {
         <div className='col-md-2 text-center'>Assign</div>
       </div>
       {
-        renderJobs(data[0])
+        renderJobs(data)
       }
     </div>
   );
@@ -98,6 +99,7 @@ const JobsAdmin = (props) => {
 // export default JobsAdmin;
 
 const mapStateToProps = ({job}) => {
+  console.log('mapStateToProps ',job)
   return {
     data: job.item,
     isFetching: job.isFetching
