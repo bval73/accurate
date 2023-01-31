@@ -88,7 +88,7 @@ const Header = ({username, usertype, isAuth, logout}) => {
             {usertype === 'admin' && isAuth &&
             <React.Fragment>
               <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/job/admin">
+              <Link className="nav-link" aria-current="page" to="/admin">
                 Jobs
               </Link>
               </li>            

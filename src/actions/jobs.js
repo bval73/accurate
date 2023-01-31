@@ -4,18 +4,18 @@ const { accAxios } = axiosService;
 
 
 // job
-export const fetchJob = () => async dispatch => {
-  dispatch({type: 'IS_FETCHING_JOB'});
-  const res = await accAxios.get('/job');
-    //send to reducer
-  dispatch({
-    type: 'FETCH_JOB',
-    jobs: res.data
-  });
-}
+// export const fetchJob = () => async dispatch => {
+//   dispatch({type: 'IS_FETCHING_JOB'});
+//   const res = await accAxios.get('/job');
+//     //send to reducer
+//   dispatch({
+//     type: 'FETCH_JOB',
+//     jobs: res.data
+//   });
+// }
 
 export const fetchAdminJob = () => async dispatch => {
-  dispatch({type: 'IS_FETCHING_JOB'});
+  dispatch({type: 'IS_FETCHING_ADMIN_JOB'});
   const res = await accAxios.get('/job/admin');
     //send to reducer
   dispatch({

@@ -8,7 +8,7 @@ const initJobReducer = () => {
       case 'FETCH_JOB':
         return action.jobs;
       case 'FETCH_ADMIN_JOB':
-        return [...state, action.jobs]; 
+        return action.jobs; 
       case 'FETCH_JOB_BY_ID':
         return action.jobs;
       case 'IS_FETCHING_JOB':
@@ -29,8 +29,9 @@ const initJobReducer = () => {
   const isFetching = (state = false, action) =>{
     switch(action.type) {
       case 'IS_FETCHING_JOB':
-      // case 'IS_FETCHING_JOBS':  
         return true;
+      case 'IS_FETCHING_ADMIN_JOB':
+        return false;
       case 'FETCH_JOB_BY_ID':
         return false
       case 'FETCH_JOB':
