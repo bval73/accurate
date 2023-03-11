@@ -8,12 +8,27 @@ const moment = require('moment');
 const { sendEmail } = require('../utils/mail/index');
 
 exports.getTechJobs = async (req, res) => {
-  console.log('getTechJobs');
+  Job.find({}, (err, foundJobs) => {
+    if(err) {
+      console.log('the mongoose error is ',err)
+      return res.mongoError(err);
+    }
+    return res.json(foundJobs);
+  });
+}
+
+exports.getAdminJobs = (req,res) => {
+  Job.find({}, (err, foundJobs) => {
+    if(err) {
+      console.log('the mongoose error is ',err)
+      return res.mongoError(err);
+    }
+    return res.json(foundJobs);
+  });
 }
 
 
-exports.getAdminJobs = (req,res) => {
-  // console.log('getAdminJobs ')
+// exports.getAdminJobs = (req,res) => {
   // const { job } = req.query;
   // const query = job ? Job.find({job}) : Job.find({});
   // try {
@@ -25,15 +40,14 @@ exports.getAdminJobs = (req,res) => {
   //   return res.mongoError(error);
   // }
 
-  Job.find({}, (err, foundJobs) => {
-    if(err) {
-      console.log('the mongoose error is ',err)
-      return res.mongoError(err);
-    }
-    console.log('getAdminJobs ',foundJobs)
-    return res.json(foundJobs);
-  });
-}
+//   Job.find({}, (err, foundJobs) => {
+//     if(err) {
+//       console.log('the mongoose error is ',err)
+//       return res.mongoError(err);
+//     }
+//     return res.json(foundJobs);
+//   });
+// }
 
 // exports.getJobs = (req, res) => {
 //   console.log('getJobs',req)
@@ -98,7 +112,7 @@ exports.jobCompleted = (req, res) => {
 
 exports.assignTech = (req, res) => {
   
-  console.log('asign tech')
+  console.log('assign tech')
 }//.sort({ date: 'asc'});
 
 exports.sendApptEmail = (req, res) => {

@@ -133,6 +133,7 @@ async function parseToken(token){
     try {
       payload = jose.decodeJwt(token);
     } catch (err) {
+      console.group('removing token....')
       sessionStorage.removeItem('acc-token');
       notAuthorized(err);
     }
@@ -140,7 +141,6 @@ async function parseToken(token){
   }catch(err){
     return {err: err.message};
   }
-  
 }
 
 function notAuthorized(res){

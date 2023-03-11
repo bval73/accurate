@@ -54,7 +54,6 @@ app.use('/api/v1/pages', pageRoutes);
 app.use('/api/v1/contact', contactRoutes);
 
 //jobs
-// app.use('/api/v1/admin', jobRoutes);
 app.use('/api/v1/job', jobRoutes);
 
 app.listen(PORT, () => {

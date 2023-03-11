@@ -15,8 +15,9 @@ const jobSchema = new Schema({
   owner: {type: Schema.Types.ObjectId, ref: 'User'},
   assignedTech: {
     type: String,
-    default:"Bill"
+    default:''
   },
+  // assignedTech: {type: Schema.Types.ObjectId, ref: 'Tech'},
   city: {
     type: String,
     default:''

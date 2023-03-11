@@ -36,7 +36,7 @@ const userSchema = new Schema({
     phone: {
         type: String,
         match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/
-      },
+    },
     street:{type: String},
     city: {type:String},
     zip: {type:String},

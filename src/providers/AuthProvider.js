@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { loginUser, userAuthenticated } from 'actions';
 import { decodeJwt } from 'jose'
 import moment from 'moment';
@@ -30,6 +31,12 @@ const AuthBaseProvider = ({children, dispatch}) => {
   }
 
   const getExpiration = (decodedToken) => {
+    const newDt = new Date();
+
+    if(moment.unix(decodedToken.exp) < newDt) {
+      sessionStorage.removeItem('acc-token');
+    }
+    // return moment.unix(decodedToken.exp)>newDt
     return moment.unix(decodedToken.exp);
   }
 
@@ -52,10 +59,12 @@ const AuthBaseProvider = ({children, dispatch}) => {
   }
 
   const logout = () => {
-    console.log('logout ');
     sessionStorage.removeItem('acc-token');
+    checkAuthState();
     dispatch({type: 'LOG_OUT_USER'});
-
+    // return {shouldRedirect:true}
+    // <Redirect to={{pathname: '/home'}} />
+    // return <Redirect to={{pathname: '/login'}} />
   }
 
   const signIn = (loginData) => {
