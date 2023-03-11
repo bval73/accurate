@@ -13,7 +13,7 @@ export const registerUser = (registerData) => {
     })
 }
 
-export const loginUser = (loginData) => {
+export const  loginUser = (loginData) => {
   return accAxios
     .post('/users/login', loginData)
     .then(res => res.data)

@@ -8,6 +8,8 @@ const initJobReducer = () => {
       case 'FETCH_JOB':
         return action.jobs;
       case 'FETCH_ADMIN_JOB':
+        return action.jobs;
+      case 'FETCH_TECH_JOB':
         return action.jobs; 
       case 'FETCH_JOB_BY_ID':
         return action.jobs;
@@ -31,6 +33,8 @@ const initJobReducer = () => {
       case 'IS_FETCHING_JOB':
         return true;
       case 'IS_FETCHING_ADMIN_JOB':
+        return false;
+      case 'IS_FETCHING_TECH_JOB':
         return false;
       case 'FETCH_JOB_BY_ID':
         return false

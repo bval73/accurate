@@ -63,12 +63,10 @@ const Routes = () => {
         <AuthRoute path="/job/tech" >
           <JobsTech />
         </AuthRoute>
-        {/* <Route exact path="/job/tech" component={JobsTech} /> */}
 
         <AuthRoute path="/job/admin" >
           <JobsAdmin />
         </AuthRoute>
-        {/* <Route exact path="/job/admin" component={JobsAdmin} /> */}
 
         <Route path="*/pressure-washing*" component={CityPage} />
 

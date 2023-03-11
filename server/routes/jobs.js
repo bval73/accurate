@@ -16,9 +16,9 @@ const {
 
 // router.get('', authMiddleWare, getJobs);
 router.get('/admin',authMiddleWare, getAdminJobs);
-router.get('/job/tech',authMiddleWare, getTechJobs);
+router.get('/tech',authMiddleWare, getTechJobs);
 router.get('/:id', getJobById);
-router.get('/day/:date', getJobByDt);
+router.get('/:date', getJobByDt);
 router.get('/tech/:assignedTech/:date', getJobByDtTech);
 
 router.post('/appointment/sendEmail', sendApptEmail);

@@ -2,59 +2,60 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import {fetchAdminJob,fetchJob} from '../actions';
+import {fetchAdminJob} from '../actions';
 // import AccBtn from 'shared/AccBtn';
 
 const JobsAdmin = (props) => {
-  const { data, isFetching } = props;
+  const { data, isFetching, dispatch } = props;
+
   const optionsValues = [
     {
-      name:'Bill Valentine',
+      tech:'Bill Valentine',
       id:1
     },
     {
-      name:'Stefan Valentine',
+      tech:'Stefan Valentine',
       id:2
     },
     {
-      name:'Samantha Valentine',
+      tech:'Samantha Valentine',
       id:3
     },
     {
-      name:'Karen Valentine',
+      tech:'Karen Valentine',
       id:4
     },
     {
-      name:'Will Valentine',
+      tech:'Will Valentine',
       id:5
     }
   ];
 
   useEffect(() => {
-    // props.dispatch(fetchJob());
-    props.dispatch(fetchAdminJob());
-  }, []);
+    dispatch(fetchAdminJob());
+  }, [dispatch]);
 
-  const renderOptions = (options) => {
+  const renderOptions = (options,job) => {
     return(
-      options.map((optionInput) => 
-        <option key={optionInput.id} value={optionInput.id}>
-          {optionInput.name}
-        </option>
-      )
+      options.map((optionInput) => {
+        return (
+            <option key={job._id + optionInput.tech + '-' + optionInput.id} value={optionInput.tech}>{optionInput.tech}</option>
+        ) 
+      })
     )
   }
 
   const changeOption = (event) => {
     console.log('option has changed..',event.target.value)
+    console.log('event.target..', event)
+    event.value = event.target.value;
   }
 
   const renderJobs = (data) => {
-    console.log('renderJobs ',data);
     if(data) {
       return(
-        data.map((job,index) =>
-          <div className={`row admin-row `} id={index} key={job._id}>
+        data.map((job) =>
+          <div className={`row admin-row `} id={job._id} key={job._id}>
             <div className='col-md-1 text-center'>{job.time}</div>
             <div className='col-md-1 text-center'>{job.day}</div>
             <div className='col-md-1 text-center'>{job.date}</div>
@@ -63,9 +64,10 @@ const JobsAdmin = (props) => {
             <div className='col-md-2 text-center'>{job.streetAddress}</div>
             <div className='col-md-2 text-center'>{job.city}</div>
             <div className='col-md-2 text-center'>
-              <select onChange={changeOption}>
+              <select onChange={changeOption} value={job.assignedTech}>
+                <option key="choose" value='Choose a tech'>Choose a tech</option>
                 {
-                  renderOptions(optionsValues)
+                  renderOptions(optionsValues,job)
                 }
               </select>
             </div>
@@ -96,10 +98,7 @@ const JobsAdmin = (props) => {
   );
 }
 
-// export default JobsAdmin;
-
 const mapStateToProps = ({job}) => {
-  console.log('mapStateToProps ',job)
   return {
     data: job.item,
     isFetching: job.isFetching
